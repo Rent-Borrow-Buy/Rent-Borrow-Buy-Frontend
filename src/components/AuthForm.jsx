@@ -1,17 +1,18 @@
 import React, { useState } from 'react'
-import { signUp } from '../services/users';
+import { signIn, signUp } from '../services/users';
 
 export default function AuthForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
+  const [isSigningUp, setIsSigningUp] = useState(true);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('handle submit', email);
     try {
       setErrorMessage('');
-      await signUp({ email, password });
+      isSigningUp ?
+      await signUp({ email, password }) : 
+      await signIn({ email, password });
     } catch (error) {
       setErrorMessage(error.message);
     }
@@ -19,6 +20,7 @@ export default function AuthForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      {isSigningUp ? <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign up</span> : <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign in</span>}
       <label htmlFor="Email-Input">
         <input 
           placeholder='email'
