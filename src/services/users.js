@@ -38,3 +38,15 @@ export const signOut = async () => {
 
   return (resp.json);
 }
+
+export const getUser = async () => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/users/me`, {
+      credentials: 'include'
+    });
+    return resp.json();
+  } catch (error) {
+    console.log(error.message);
+    return null;
+  }
+}
