@@ -6,8 +6,12 @@ export default function AuthForm() {
   const [password, setPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [isSigningUp, setIsSigningUp] = useState(true);
+  console.log(isSigningUp, 'is sign up');
+
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log(email, password, 'auth fetch');
     try {
       setErrorMessage('');
       isSigningUp ?
@@ -22,7 +26,9 @@ export default function AuthForm() {
     <form onSubmit={handleSubmit}>
       {isSigningUp ? <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign up</span> : <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign in</span>}
       <label htmlFor="Email-Input">
+        {' '}
         <input 
+
           placeholder='email'
           id='Email-Input'
           name='email'
@@ -32,6 +38,8 @@ export default function AuthForm() {
         />
       </label>
       <label htmlFor="Password-Input">
+      {' '}
+
         <input 
           placeholder='password'
           id='Password-Input'
@@ -41,7 +49,9 @@ export default function AuthForm() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </label>
-      <button type='submit'>sign-up</button>
+      <button type='submit'>
+        {isSigningUp ? 'Sign Up' : 'Sign In'}
+      </button>
     </form>
   )
 }

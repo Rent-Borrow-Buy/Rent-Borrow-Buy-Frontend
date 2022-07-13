@@ -13,6 +13,7 @@ export const signUp = async ({ email, password }) => {
 }
 
 export const signIn = async ({ email, password}) => {
+  console.log('sign in');
   const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
