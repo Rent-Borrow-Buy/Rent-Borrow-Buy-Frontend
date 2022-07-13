@@ -9,10 +9,12 @@ export const signUp = async ({ email, password }) => {
 
   if (!resp.ok) throw new Error('Invalid email or password');
 
-  return resp.json();
+  const json = await resp.json();
+
+  return json;
 }
 
-export const signIn = async ({ email, password}) => {
+export const signIn = async ({ email, password }) => {
   const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json'},
@@ -23,7 +25,9 @@ export const signIn = async ({ email, password}) => {
 
   if (!resp.ok) throw new Error('Invalid email or password')
 
-  return resp.json();
+  const json = await resp.json();
+
+  return json;
 }
 
 export const signOut = async () => {
@@ -36,7 +40,9 @@ export const signOut = async () => {
 
   if (!resp.ok) throw new Error('There was a problem signing out');
 
-  return (resp.json);
+  const json = await resp.json();
+
+  return json;
 }
 
 export const getUser = async () => {
@@ -44,7 +50,12 @@ export const getUser = async () => {
     const resp = await fetch(`${process.env.API_URL}/api/v1/users/me`, {
       credentials: 'include'
     });
-    return resp.json();
+    
+    if (!resp.ok) return null;
+    
+    const json = await resp.json();
+
+    return json;
   } catch (error) {
     console.log(error.message);
     return null;

@@ -7,11 +7,11 @@ export const UserProvider = ({ children }) => {
 
     const currentUser = getUser();
 
-    const [error, setError] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
     const [user, setUser] = useState(currentUser || {email: null});
 
     return (
-        <UserContext.Provider value={{ error, setError, user, setUser}}>
+        <UserContext.Provider value={{ user, setUser, errorMessage, setErrorMessage }}>
             {children}
         </UserContext.Provider>
     );
