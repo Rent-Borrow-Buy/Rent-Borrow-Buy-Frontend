@@ -1,12 +1,10 @@
-import React from 'react'
-import AuthForm from '../components/AuthForm'
-import { signOut } from '../services/users'
+import React from 'react';
+import SignUpForm from '../components/SignUpForm';
 
 export default function Auth() {
   return (
     <>
-      <AuthForm />
-      <button onClick={() => signOut()}>log out</button>
+      <SignUpForm />
     </>
-  )
+  );
 }
