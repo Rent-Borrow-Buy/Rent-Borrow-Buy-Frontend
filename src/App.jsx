@@ -1,3 +1,14 @@
+import { Route, Switch } from "react-router-dom";
+import Auth from "./views/Auth";
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <>
+      <Switch>
+        <Route path="/auth">
+          <Auth />
+        </Route>
+      </Switch>
+    </>
+  )
 }
