@@ -12,7 +12,6 @@ export default function SignUpForm({ initialState }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formState);
     try {
       setErrorMessage('');
       await signUpUser(formState);
@@ -24,8 +23,17 @@ export default function SignUpForm({ initialState }) {
 
   return (
     <form onSubmit={handleSubmit}>
+      <label htmlFor="Username-Input">
+        <input
+          placeholder="username (optional)"
+          id="Username-Input"
+          name="username"
+          type="text"
+          value={formState.username}
+          onChange={handleChange}
+        />
+      </label>
       <label htmlFor="Email-Input">
-        {' '}
         <input
           placeholder="email"
           id="Email-Input"
@@ -35,9 +43,7 @@ export default function SignUpForm({ initialState }) {
           onChange={handleChange}
         />
       </label>
-    
       <label htmlFor="Password-Input">
-        {' '}
         <input
           placeholder="password"
           id="Password-Input"
@@ -48,24 +54,32 @@ export default function SignUpForm({ initialState }) {
         />
       </label>
       <label htmlFor="First-Name-Input">
-        {' '}
         <input
           placeholder="first name"
           id="First-Name-Input"
           name="firstName"
-          type="first_name"
+          type="text"
           value={formState.firstName}
           onChange={handleChange}
         />
       </label>
       <label htmlFor="Last-Name-Input">
-        {' '}
         <input
           placeholder="last name"
           id="Last-Name-Input"
           name="lastName"
-          type="last_name"
+          type="text"
           value={formState.lastName}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="Zipcode-Input">
+        <input
+          placeholder="zip code (optional)"
+          id="Zipcode-Input"
+          name="zipcode"
+          type="number"
+          value={formState.zipcode}
           onChange={handleChange}
         />
       </label>
