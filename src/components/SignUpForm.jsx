@@ -15,7 +15,7 @@ export default function SignUpForm({ initialState }) {
     console.log(formState);
     try {
       setErrorMessage('');
-      await signUpUser(formState.email, formState.password);
+      await signUpUser(formState);
       history.replace('/');
     } catch (error) {
       setErrorMessage(error.message);
@@ -35,6 +35,7 @@ export default function SignUpForm({ initialState }) {
           onChange={handleChange}
         />
       </label>
+    
       <label htmlFor="Password-Input">
         {' '}
         <input
@@ -43,6 +44,28 @@ export default function SignUpForm({ initialState }) {
           name="password"
           type="password"
           value={formState.password}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="First-Name-Input">
+        {' '}
+        <input
+          placeholder="first name"
+          id="First-Name-Input"
+          name="firstName"
+          type="first_name"
+          value={formState.firstName}
+          onChange={handleChange}
+        />
+      </label>
+      <label htmlFor="Last-Name-Input">
+        {' '}
+        <input
+          placeholder="last name"
+          id="Last-Name-Input"
+          name="lastName"
+          type="last_name"
+          value={formState.lastName}
           onChange={handleChange}
         />
       </label>

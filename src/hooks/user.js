@@ -18,8 +18,9 @@ export const useAuth = () => {
     setUser(authenticatedUser);
   };
 
-  const signUpUser = async (email, password) => {
-    const newUser = await signUp({ email, password });
+  const signUpUser = async ({user}) => {
+    console.log(user, 'user.js');
+    const newUser = await signUp({ user});
     setUser(newUser);
   };
 
