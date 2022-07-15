@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/user';
 import { signUp } from '../services/users';
-export default function AuthForm() {
+
+
+export default function LoginForm() {
 
   const { login, errorMessage, setErrorMessage } = useAuth();
   

@@ -9,7 +9,7 @@ export const useAuth = () => {
     throw new Error('useAuth must be used within a userProvider');
   }
 
-  const { user, setUser, errorMessage, setErrorMessage } = context;
+  const { user, setUser, errorMessage, setErrorMessage, loading} = context;
 
   const isLoggedIn = user?.email;
 
@@ -36,5 +36,6 @@ export const useAuth = () => {
     setErrorMessage,
     signUpUser,
     logout,
+    loading
   };
 };
