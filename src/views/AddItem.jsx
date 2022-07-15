@@ -6,7 +6,13 @@ import { useForm } from '../hooks/useForm';
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
-  const { formState, handleChange, clearForm } = useForm({});
+  const { formState, handleChange, clearForm } = useForm({
+    rent: false,
+    buy: false,
+    borrow: false,
+    sold: false,
+  });
+  console.log('formState', formState);
 
   const handleSubmitFile = async (e) => {
     e.preventDefault();
@@ -14,6 +20,7 @@ export default function AddItem() {
     const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
       method: 'POST',
       body: JSON.stringify(formState),
+      credentials: 'include',
       mode: 'cors',
       headers: { 'Content-type': 'application/json' },
     });
@@ -55,7 +62,7 @@ export default function AddItem() {
           type="checkbox"
           id="rent"
           name="rent"
-          value={formState.rent}
+          checked={formState.rent}
           onChange={handleChange}
         />
         <label htmlFor="rent">Rent</label>
@@ -64,7 +71,7 @@ export default function AddItem() {
           type="checkbox"
           id="borrow"
           name="borrow"
-          value={formState.borrow}
+          checked={formState.borrow}
           onChange={handleChange}
         />
         <label htmlFor="borrow">Borrow</label>
@@ -73,7 +80,7 @@ export default function AddItem() {
           type="checkbox"
           id="buy"
           name="buy"
-          value={formState.buy}
+          checked={formState.buy}
           onChange={handleChange}
         />
         <label htmlFor="buy">Buy</label>
