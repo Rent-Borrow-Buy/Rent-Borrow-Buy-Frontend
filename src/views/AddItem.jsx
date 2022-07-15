@@ -13,6 +13,7 @@ export default function AddItem() {
   };
 
   const uploadImage = async (encodedImage) => {
+    console.log(encodedImage);
     try {
       await fetch(process.env.API_URL + '/api/v1/images', {
         method: 'POST',
