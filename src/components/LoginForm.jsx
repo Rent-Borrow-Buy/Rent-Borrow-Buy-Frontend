@@ -4,7 +4,7 @@ import { useAuth } from '../hooks/user';
 import { signUp } from '../services/users';
 
 
-export default function LoginForm() {
+export default function LoginForm({ setIsSigningUp }) {
 
   const { login, errorMessage, setErrorMessage } = useAuth();
   

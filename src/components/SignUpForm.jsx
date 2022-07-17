@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/user';
 import { useForm } from '../hooks/useForm';
 
-export default function SignUpForm({ initialState }) {
+export default function SignUpForm({ initialState, setIsSigningUp }) {
   const { signUpUser, errorMessage, setErrorMessage } = useAuth();
 
   const { formState, handleChange, clearForm } = useForm(initialState);
