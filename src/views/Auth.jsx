@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignUpForm from '../components/SignUpForm';
+import SignUpForm from '../components/SignUpForm/SignUpForm';
 import LoginForm from '../components/LoginForm';
 
 export default function Auth() {
@@ -9,7 +9,10 @@ export default function Auth() {
     <>
       {
         isSigningUp ?
-          <SignUpForm { ...setIsSigningUp } /> :
+          <SignUpForm 
+            isSigningUp={isSigningUp} 
+            setIsSigningUp={setIsSigningUp} 
+          /> :
           <LoginForm { ...setIsSigningUp } />
       }
     </>

@@ -4,13 +4,12 @@ import { useAuth } from '../hooks/user';
 import { signUp } from '../services/users';
 
 
-export default function LoginForm({ setIsSigningUp }) {
+export default function LoginForm({ isSigningUp, setIsSigningUp }) {
 
   const { login, errorMessage, setErrorMessage } = useAuth();
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isSigningUp, setIsSigningUp] = useState(true);
  
   const history = useHistory();
 
