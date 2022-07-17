@@ -14,7 +14,7 @@ export const useAuth = () => {
   const isLoggedIn = user?.email;
 
   const login = async (email, password) => {
-    const authenticatedUser = await signIn({ email, password });
+    const authenticatedUser = await signIn(email, password);
     setUser(authenticatedUser);
   };
 
