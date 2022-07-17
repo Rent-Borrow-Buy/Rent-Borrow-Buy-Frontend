@@ -75,6 +75,7 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
         id="Last-Name-Input"
         name="lastName"
         type="text"
+        className={styles.lastName}
         value={formState.lastName}
         onChange={handleChange}
       />
@@ -90,7 +91,7 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
         onChange={handleChange}
       />
       <button type="submit">Sign up</button>
-      <span>
+      <span className={styles.signInLinkContainer}>
         already have an account?
           <span 
             className={styles.signInLink}

@@ -1,13 +1,52 @@
 .signUpForm {
   display: flex;
   flex-direction: column;
+  font-family: 'Source Sans Pro';
+}
+
+.signUpForm * {
+  font-family: 'Source Sans Pro';
+  margin: 4px 0px;
 }
 
 .signUpForm label {
   margin-left: 4px;
+  margin-top: 16px;
 }
 
-.signUpForm * {
-  margin: 8px 0px;
+.signUpForm input {
+  font-size: 1.4rem;
+  font-weight: 400;
+  padding: 4px;
 }
 
+.signUpForm input::placeholder {
+  font-weight: 200;
+}
+
+.lastName {
+  margin-top: -12px;
+}
+
+.signUpForm button {
+  font-size: 1.4rem;
+  font-weight: 200;
+  margin: 24px auto;
+  padding: 8px;
+  width: 40%;
+}
+
+.signInLinkContainer {
+  margin: auto;
+  font-weight: 300;
+  font-size: 1.2rem;
+}
+
+.signInLink {
+  color: blue;
+  margin-left: 8px;
+}
+
+.signInLink:hover {
+  cursor: pointer;
+}
