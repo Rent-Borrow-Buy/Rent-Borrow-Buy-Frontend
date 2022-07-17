@@ -11,11 +11,23 @@ export default function Auth() {
         isSigningUp ?
           <SignUpForm 
             isSigningUp={isSigningUp} 
-            setIsSigningUp={setIsSigningUp} 
+            setIsSigningUp={setIsSigningUp}
+            initialState={{
+              email: '',
+              password: '',
+              username: '',
+              firstName: '',
+              lastName: '',
+              zipcode: ''
+            }}
           /> :
           <LoginForm 
             isSigningUp={isSigningUp} 
             setIsSigningUp={setIsSigningUp}
+            initialState={{
+              email: '',
+              password: ''
+            }}
           />
       }
     </>
