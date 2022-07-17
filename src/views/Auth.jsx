@@ -13,7 +13,10 @@ export default function Auth() {
             isSigningUp={isSigningUp} 
             setIsSigningUp={setIsSigningUp} 
           /> :
-          <LoginForm { ...setIsSigningUp } />
+          <LoginForm 
+            isSigningUp={isSigningUp} 
+            setIsSigningUp={setIsSigningUp}
+          />
       }
     </>
   );

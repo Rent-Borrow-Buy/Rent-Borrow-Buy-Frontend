@@ -1,26 +1,26 @@
-.signUpForm {
+.authForm {
   display: flex;
   flex-direction: column;
   font-family: 'Source Sans Pro';
 }
 
-.signUpForm * {
+.authForm * {
   font-family: 'Source Sans Pro';
   margin: 4px 0px;
 }
 
-.signUpForm label {
+.authForm label {
   margin-left: 4px;
   margin-top: 16px;
 }
 
-.signUpForm input {
+.authForm input {
   font-size: 1.4rem;
   font-weight: 400;
   padding: 4px;
 }
 
-.signUpForm input::placeholder {
+.authForm input::placeholder {
   font-weight: 200;
 }
 
@@ -28,7 +28,14 @@
   margin-top: -12px;
 }
 
-.signUpForm button {
+.required {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-top: 12px;
+  margin-bottom: -16px;
+}
+
+.authForm button {
   font-size: 1.4rem;
   font-weight: 200;
   margin: 24px auto;

@@ -2,13 +2,11 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/user';
 import { useForm } from '../../hooks/useForm';
-import styles from './SignUpForm.css';
+import styles from '../AuthForm.css';
 
 export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }) {
   const { signUpUser, errorMessage, setErrorMessage } = useAuth();
-
   const { formState, handleChange, clearForm } = useForm(initialState);
-
   const history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -23,7 +21,8 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.signUpForm}>
+    <form onSubmit={handleSubmit} className={styles.authForm}>
+      {errorMessage}
       <label htmlFor="email">
         sign up with your email: *
       </label>
@@ -90,6 +89,7 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
         value={formState.zipcode}
         onChange={handleChange}
       />
+      <span className={styles.required}>* required</span>
       <button type="submit">Sign up</button>
       <span className={styles.signInLinkContainer}>
         already have an account?
