@@ -20,32 +20,15 @@ export default function AddItem() {
     console.log('you clicked submit!');
     const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
       method: 'POST',
-      body: JSON.stringify(formState),
+      body: JSON.stringify({ ...formState, encodedImage: previewSource }),
       credentials: 'include',
       mode: 'cors',
       headers: { 'Content-type': 'application/json' },
     });
 
     console.log('item_res', item_res);
-
-    // if (!previewSource) return;
-    // const res = await uploadImage(previewSource);
   };
 
-  const uploadImage = async (encodedImage) => {
-    try {
-      const res = await fetch(process.env.API_URL + '/api/v1/images', {
-        method: 'POST',
-        body: JSON.stringify({ data: encodedImage }),
-        headers: { 'Content-type': 'application/json' },
-      });
-      const data = await res.json();
-      console.log('data', data);
-      return res;
-    } catch (error) {
-      console.log(error);
-    }
-  };
   return (
     <>
       <form onSubmit={handleSubmitFile} className={styles.addItemForm}>
