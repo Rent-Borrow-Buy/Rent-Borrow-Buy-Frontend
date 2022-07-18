@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/user';
 import { useForm } from '../../hooks/useForm';
-import styles from '../AuthForm.css';
+import styles from '../AuthForm.css'
 
 export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }) {
   const { signUpUser, errorMessage, setErrorMessage } = useAuth();
