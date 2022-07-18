@@ -3,6 +3,7 @@ import { useAuth } from "./hooks/user";
 import AddItem from "./views/AddItem";
 import Auth from "./views/Auth";
 import Home from "./views/Home";
+import UpdateItem from "./views/UpdateItem";
 
 export default function App() {
 
@@ -11,13 +12,16 @@ export default function App() {
   return (
     <>
       <Switch>
+        <Route path='/items/:id/edit'>
+          <UpdateItem/>
+        </Route>
         <Route path="/additem">
           <AddItem />
         </Route>
         <Route path="/auth">
           <Auth />
         </Route>
-        <Route path="/">
+        <Route path="/"> 
           <Home />
         </Route>
       </Switch>
