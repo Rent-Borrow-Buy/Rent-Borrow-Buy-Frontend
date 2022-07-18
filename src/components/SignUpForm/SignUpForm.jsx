@@ -85,7 +85,7 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
         placeholder="zip code (optional)"
         id="Zipcode-Input"
         name="zipcode"
-        type="number"
+        type="text"
         value={formState.zipcode}
         onChange={handleChange}
       />

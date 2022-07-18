@@ -1,0 +1,68 @@
+.addItemForm {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Source Sans Pro';
+}
+
+.addItemForm * {
+  font-family: 'Source Sans Pro';
+  margin: 4px 0px;
+}
+
+.addItemForm label {
+  margin-left: 4px;
+  margin-top: 16px;
+}
+
+.addItemForm input {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 4px;
+}
+
+.addItemForm textarea {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 4px;
+}
+
+.checkboxesPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkboxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.checkboxes input {
+  margin: 0px 8px;
+}
+
+.checkboxes label {
+  font-size: 0.8rem;
+  display: block;
+  padding-left: 12px;
+  text-indent: -12px;
+}
+
+.checkboxes input {
+  width: 28px;
+  height: 16px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: 0px;
+  *overflow: hidden;
+}
+
+.price {
+  width: 40%;
+}
+
+.addItemForm textarea {
+  resize: none;
+}
