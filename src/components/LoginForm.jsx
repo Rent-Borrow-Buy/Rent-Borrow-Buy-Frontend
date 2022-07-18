@@ -1,22 +1,27 @@
 import React, { useState } from 'react'
-import { signIn, signUp } from '../services/users';
+import { useHistory } from 'react-router-dom';
+import { useAuth } from '../hooks/user';
+import { signUp } from '../services/users';
 
-export default function AuthForm() {
+
+export default function LoginForm() {
+
+  const { login, errorMessage, setErrorMessage } = useAuth();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
   const [isSigningUp, setIsSigningUp] = useState(true);
-  console.log(isSigningUp, 'is sign up');
-
+ 
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(email, password, 'auth fetch');
     try {
       setErrorMessage('');
       isSigningUp ?
       await signUp({ email, password }) : 
-      await signIn({ email, password });
+      await login(email, password);
+      history.replace('/');
     } catch (error) {
       setErrorMessage(error.message);
     }
