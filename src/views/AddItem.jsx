@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
+import styles from './AddItem.css';
 
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
@@ -30,8 +31,8 @@ export default function AddItem() {
 
   return (
     <>
-      <form onSubmit={handleSubmitFile}>
-        <label htmlFor="title">Item name</label>
+      <form onSubmit={handleSubmitFile} className={styles.addItemForm}>
+        <label htmlFor="title" />
         <input
           type="text"
           placeholder="Item name"
@@ -40,35 +41,49 @@ export default function AddItem() {
           value={formState.title}
           onChange={handleChange}
         />
-
-        <input
-          type="checkbox"
-          id="rent"
-          name="rent"
-          checked={formState.rent}
-          onChange={handleChange}
-        />
-        <label htmlFor="rent">Rent</label>
-
-        <input
-          type="checkbox"
-          id="borrow"
-          name="borrow"
-          checked={formState.borrow}
-          onChange={handleChange}
-        />
-        <label htmlFor="borrow">Borrow</label>
-
-        <input
-          type="checkbox"
-          id="buy"
-          name="buy"
-          checked={formState.buy}
-          onChange={handleChange}
-        />
-        <label htmlFor="buy">Buy</label>
-
-        <label htmlFor="description">Item Description</label>
+        <section className={styles.checkboxesPrice}>
+          <div className={styles.checkboxes}>
+            <label htmlFor="rent">Rent
+              <input
+                type="checkbox"
+                id="rent"
+                name="rent"
+                checked={formState.rent}
+                onChange={handleChange}
+              />
+            </label>
+            <label htmlFor="borrow">Borrow
+              <input
+                type="checkbox"
+                id="borrow"
+                name="borrow"
+                checked={formState.borrow}
+                onChange={handleChange}
+              />
+            </label>
+            <label htmlFor="buy">Buy
+              <input
+                type="checkbox"
+                id="buy"
+                name="buy"
+                checked={formState.buy}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
+          <label htmlFor="price" />
+          <input
+            className={styles.price}
+            type="number"
+            step="any"
+            id="price"
+            name="price"
+            placeholder="price"
+            // value={formState.price}
+            // onChange={handleChange}
+          />
+          <label htmlFor="description" />
+        </section>
         <textarea
           id="description"
           name="description"
@@ -78,7 +93,7 @@ export default function AddItem() {
           onChange={handleChange}
           placeholder="Describe your item"
         />
-        <label htmlFor="zipcode">Zip Code</label>
+        <label htmlFor="zipcode" />
         <input
           id="zipcode"
           name="zipcode"
@@ -86,13 +101,10 @@ export default function AddItem() {
           onChange={handleChange}
           placeholder="Zip Code"
         />
-
         <ImageUpload
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
-        <button type="submit">Submit Item</button>
-      </form>
       {previewSource && (
         <img
           src={previewSource}
@@ -100,6 +112,8 @@ export default function AddItem() {
           style={{ height: '300px' }}
         />
       )}
+        <button type="submit">Submit Item</button>
+      </form>
     </>
   );
 }
