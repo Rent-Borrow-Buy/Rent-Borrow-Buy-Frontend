@@ -1,26 +1,19 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../hooks/user';
-import { signUp } from '../services/users';
+import { useForm } from '../hooks/useForm';
+import styles from './AuthForm.css';
 
-
-export default function LoginForm() {
-
+export default function LoginForm({ initialState, isSigningUp, setIsSigningUp }) {
   const { login, errorMessage, setErrorMessage } = useAuth();
-  
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [isSigningUp, setIsSigningUp] = useState(true);
- 
+  const { formState, handleChange, clearForm } = useForm(initialState);
   const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       setErrorMessage('');
-      isSigningUp ?
-      await signUp({ email, password }) : 
-      await login(email, password);
+      await login(formState);
       history.replace('/');
     } catch (error) {
       setErrorMessage(error.message);
@@ -28,35 +21,40 @@ export default function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      {isSigningUp ? <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign up</span> : <span onClick={() => setIsSigningUp(!isSigningUp)}>Sign in</span>}
-      <label htmlFor="Email-Input">
-        {' '}
-        <input 
-
-          placeholder='email'
-          id='Email-Input'
-          name='email'
-          type='email'
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
+    <form onSubmit={handleSubmit} className={styles.authForm}>
+      {errorMessage}
+      <label htmlFor="email">
+        email:
       </label>
-      <label htmlFor="Password-Input">
-      {' '}
-
-        <input 
-          placeholder='password'
-          id='Password-Input'
-          name='password'
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+      <input 
+        placeholder='email'
+        id='Email-Input'
+        name='email'
+        type='email'
+        value={formState.email}
+        onChange={handleChange}
+      />
+      <label htmlFor="password">
+        password:
       </label>
-      <button type='submit'>
-        {isSigningUp ? 'Sign Up' : 'Sign In'}
-      </button>
+      <input 
+        placeholder='password'
+        id='Password-Input'
+        name='password'
+        type='password'
+        value={formState.password}
+        onChange={handleChange}
+      />
+      <button type='submit'>Sign in</button>
+      <span className={styles.signInLinkContainer}>
+        want to make an account?
+          <span 
+            className={styles.signInLink}
+            onClick={() => setIsSigningUp(!isSigningUp)}
+          >
+            Sign up here
+          </span>
+      </span>
     </form>
   )
 }
