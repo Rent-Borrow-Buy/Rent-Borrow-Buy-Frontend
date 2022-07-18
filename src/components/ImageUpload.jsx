@@ -20,7 +20,7 @@ export default function ImageUpload({ setPreviewSource, setSelectedFile }) {
 
   return (
     <>
-      <label htmlFor="image">Upload image(s)</label>
+      <label htmlFor="image">Upload an image of your item:</label>
       <input
         type="file"
         name="image"

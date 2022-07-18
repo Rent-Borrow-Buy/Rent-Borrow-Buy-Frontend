@@ -66,3 +66,16 @@
 .addItemForm textarea {
   resize: none;
 }
+
+.uploadImage {
+  width: 90%;
+  margin: 12px auto;
+}
+
+.addItemForm button {
+  width: 40%;
+  margin: auto;
+  font-size: 1.4rem;
+  padding: 8px;
+  font-weight: 200;
+}

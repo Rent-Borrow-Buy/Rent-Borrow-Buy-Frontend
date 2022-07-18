@@ -122,13 +122,14 @@ export default function AddItem() {
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
-      {previewSource && (
-        <img
-          src={previewSource}
-          alt="chosen file"
-          style={{ height: '300px' }}
-        />
-      )}
+        {previewSource && (
+          <img
+            className={styles.uploadImage}
+            src={previewSource}
+            alt="chosen file"
+            style={{ height: '300px' }}
+          />
+        )}
         <button type="submit">Submit Item</button>
       </form>
     </>
