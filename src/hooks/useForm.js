@@ -19,5 +19,5 @@ export function useForm(inputs = {}) {
     }
   };
 
-  return { formState, handleChange, clearForm };
+  return { formState, handleChange, clearForm, setFormState };
 }
