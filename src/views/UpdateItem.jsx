@@ -4,19 +4,28 @@ import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
 import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
 
 export default function UpdateItem() {
   const { id } = useParams();
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
 
-  const { formState, handleChange, clearForm } = useForm({
+  const { formState, handleChange, clearForm, setFormState } = useForm({
     rent: false,
     buy: false,
     borrow: false,
     sold: false,
   });
-  console.log('formState', formState);
+
+  useEffect(() => {
+    const getItem = async (id) => {
+      const resp = await fetch(process.env.API_URL + `/api/v1/items/${id}`);
+      const itemDetails = await resp.json();
+      setFormState(itemDetails);
+    };
+    getItem(id);
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -85,8 +94,8 @@ export default function UpdateItem() {
             id="price"
             name="price"
             placeholder="price"
-            // value={formState.price}
-            // onChange={handleChange}
+            value={formState.price}
+            onChange={handleChange}
           />
           <label htmlFor="description" />
         </section>
