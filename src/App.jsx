@@ -3,6 +3,7 @@ import { useAuth } from './hooks/user';
 import AddItem from './views/AddItem';
 import Auth from './views/Auth';
 import Home from './views/Home';
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import UpdateItem from './views/UpdateItem';
 
 export default function App() {
@@ -11,12 +12,12 @@ export default function App() {
   return (
     <>
       <Switch>
-        <Route path="/items/:id/edit">
+        <PrivateRoute path="/items/:id/edit">
           <UpdateItem />
-        </Route>
-        <Route path="/items/new">
+        </PrivateRoute>
+        <PrivateRoute path="/items/new">
           <AddItem />
-        </Route>
+        </PrivateRoute>
         <Route path="/auth">
           <Auth />
         </Route>

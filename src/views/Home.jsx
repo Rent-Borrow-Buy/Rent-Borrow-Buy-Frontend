@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { useAuth } from '../hooks/user';
-import { UserContext } from '../context/UserContext';
 import { getAllItems } from '../services/items';
+import ItemCard from '../components/ItemCard/ItemCard';
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -15,7 +15,6 @@ export default function Home() {
   } = useAuth();
 
   useEffect(() => {
-    console.log('hello');
     try {
       const fetchData = async () => {
         const data = await getAllItems();
@@ -34,6 +33,9 @@ export default function Home() {
       {errorMessage && <span>{errorMessage}</span>}
       <div>Home</div>
       <button onClick={() => logout()}>log out</button>
+      {items.map((item) => (
+        <ItemCard key={item.id} {...item} />
+      ))}
     </>
   );
 }
