@@ -8,8 +8,11 @@ import styles from './AddItem.css';
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
+  const [submitting, setSubmitting] = useState(false);
   const history = useHistory();
   const { formState, handleChange, clearForm } = useForm({
+    title: '',
+    description: '',
     rent: false,
     buy: false,
     borrow: false,
@@ -18,6 +21,7 @@ export default function AddItem() {
 
   const handleSubmitFile = async (e) => {
     e.preventDefault();
+    setSubmitting(true);
     console.log('you clicked submit!');
     const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
       method: 'POST',
@@ -26,6 +30,7 @@ export default function AddItem() {
       mode: 'cors',
       headers: { 'Content-type': 'application/json' },
     });
+    setSubmitting(false);
     history.push('/');
   };
 
@@ -113,6 +118,7 @@ export default function AddItem() {
         />
       )}
         <button type="submit">Submit Item</button>
+        { submitting && <h3>Submitting item...</h3> }
       </form>
     </>
   );
