@@ -10,7 +10,6 @@ export const getAllItems = async () => {
     if (!resp.ok) return null;
   
     const data = await resp.json();
-    console.log('data', data);
     return data;
   } catch (e) {
     console.log(e.message);

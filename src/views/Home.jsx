@@ -15,6 +15,7 @@ export default function Home() {
   } = useAuth();
 
   useEffect(() => {
+    console.log('hello');
     try {
       const fetchData = async () => {
         const data = await getAllItems();

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
@@ -7,6 +8,7 @@ import styles from './AddItem.css';
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
+  const history = useHistory();
   const { formState, handleChange, clearForm } = useForm({
     rent: false,
     buy: false,
@@ -25,8 +27,7 @@ export default function AddItem() {
       mode: 'cors',
       headers: { 'Content-type': 'application/json' },
     });
-
-    console.log('item_res', item_res);
+    history.push('/');
   };
 
   return (
