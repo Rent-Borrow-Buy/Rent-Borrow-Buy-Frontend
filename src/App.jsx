@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import { useAuth } from "./hooks/user";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import AddItem from "./views/AddItem";
 import Auth from "./views/Auth";
 import Home from "./views/Home";
@@ -11,9 +12,9 @@ export default function App() {
   return (
     <>
       <Switch>
-        <Route path="/additem">
+        <PrivateRoute path="/additem">
           <AddItem />
-        </Route>
+        </PrivateRoute>
         <Route path="/auth">
           <Auth />
         </Route>
