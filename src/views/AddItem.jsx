@@ -15,7 +15,6 @@ export default function AddItem() {
     borrow: false,
     sold: false,
   });
-  console.log('formState', formState);
 
   const handleSubmitFile = async (e) => {
     e.preventDefault();
