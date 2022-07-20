@@ -10,7 +10,7 @@ export default function ItemDetail() {
 
   const { user, errorMessage, setErrorMessage } = useAuth();
   const { id } = useParams();
-  const isCreator = user.id === item.user_id;
+  const isCreator = user?.id === item.user_id;
 
   const handleDelete = async () => {
     await deleteItems(id);
