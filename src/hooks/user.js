@@ -2,7 +2,9 @@ import { UserContext } from '../context/UserContext';
 import { useContext } from 'react';
 import { signUp, signIn, signOut } from '../services/users';
 
+
 export const useAuth = () => {
+
   const context = useContext(UserContext);
 
   if (context === undefined) {
@@ -33,6 +35,7 @@ export const useAuth = () => {
   const logout = async () => {
     setUser({ email: null });
     await signOut();
+
   };
 
   return {

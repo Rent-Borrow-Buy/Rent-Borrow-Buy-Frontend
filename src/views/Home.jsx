@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useAuth } from '../hooks/user';
 import { getAllItems } from '../services/items';
 import ItemCard from '../components/ItemCard/ItemCard';
+import Logout from '../components/LogoutButton/LogoutButton';
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -42,6 +43,7 @@ export default function Home() {
 
   return (
     <>
+    <Logout/>
       {errorMessage && <span>{errorMessage}</span>}
       <span onClick={() => setRentableFilter(!rentableFilter)}>rent</span>
       <span onClick={() => setBorrowableFilter(!borrowableFilter)}>borrow</span>
