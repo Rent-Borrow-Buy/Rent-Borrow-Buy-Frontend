@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
@@ -118,6 +118,9 @@ export default function AddItem() {
         />
       )}
         <button type="submit">Submit Item</button>
+        <Link to="/">
+          <button>cancel</button>
+        </Link>
         { submitting && <h3>Submitting item...</h3> }
       </form>
     </>

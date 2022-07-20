@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import Logout from '../components/LogoutButton/LogoutButton';
 import { useAuth } from '../hooks/user';
 import { deleteItems, getItemById } from '../services/items';
 
@@ -34,6 +35,7 @@ export default function ItemDetail() {
 
   return (
     <>
+    <Logout/>
       {errorMessage && <span>{errorMessage}</span>}
       <h1>{item.title} details</h1>
       <img src={item.images[0].url} />

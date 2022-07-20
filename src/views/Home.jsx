@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useAuth } from '../hooks/user';
 import { getAllItems } from '../services/items';
 import ItemCard from '../components/ItemCard/ItemCard';
+import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './Home.css';
 
 export default function Home() {
@@ -14,7 +15,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
 
-  const { logout, errorMessage, setErrorMessage } = useAuth();
+  const { errorMessage, setErrorMessage } = useAuth();
 
   function process(s) {
     return s.toLowerCase().trim();
@@ -56,6 +57,7 @@ export default function Home() {
 
   return (
     <>
+    <Logout/>
       {errorMessage && <span>{errorMessage}</span>}
       <div className={styles.filters}>
         <span
