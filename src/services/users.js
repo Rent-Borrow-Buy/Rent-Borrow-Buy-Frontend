@@ -32,7 +32,7 @@ export const signIn = async ({ email, password }) => {
 
 export const signOut = async () => {
   const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
-    method: 'GET',
+    method: 'DELETE',
     headers: { 'Content-Type': 'application/json' },
     credentials: 'include',
     mode: 'cors',
