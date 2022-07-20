@@ -24,6 +24,7 @@ export const useAuth = () => {
 
   const login = async (email, password) => {
     const authenticatedUser = await signIn(email, password);
+    console.log(authenticatedUser, 'auth user');
     setUser(authenticatedUser);
   };
 
@@ -33,7 +34,7 @@ export const useAuth = () => {
   };
 
   const logout = async () => {
-    setUser({ email: null });
+    setUser(null);
     await signOut();
 
   };
