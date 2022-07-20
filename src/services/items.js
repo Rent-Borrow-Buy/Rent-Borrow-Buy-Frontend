@@ -17,6 +17,21 @@ export const getAllItems = async () => {
   }
 }
 
+export const getItemById = async (id) => {
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/items/${id}`);
+
+    if (!resp.ok) return null;
+
+    const data = await resp.json();
+    return data;
+    
+  } catch (e) {
+    console.log(e.message);
+    return null;
+  }
+}
+
 export const deleteItems= async (id) => {
   try{
     const resp = await fetch(`${process.env.API_URL}/api/v1/items/${id}`, {

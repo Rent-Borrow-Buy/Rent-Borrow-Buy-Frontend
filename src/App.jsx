@@ -3,8 +3,9 @@ import { useAuth } from './hooks/user';
 import AddItem from './views/AddItem';
 import Auth from './views/Auth';
 import Home from './views/Home';
-import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateItem from './views/UpdateItem';
+import ItemDetail from './views/ItemDetail';
 
 export default function App() {
   const { loading } = useAuth();
@@ -18,6 +19,9 @@ export default function App() {
         <PrivateRoute path="/items/new">
           <AddItem />
         </PrivateRoute>
+        <Route exact path="/items/:id">
+          <ItemDetail />
+        </Route>
         <Route path="/auth">
           <Auth />
         </Route>
