@@ -5,6 +5,7 @@ import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
+import DeleteButton from '../components/DeleteButton/DeleteButton';
 
 export default function UpdateItem() {
   const { id } = useParams();
@@ -129,6 +130,7 @@ export default function UpdateItem() {
         )}
         <button type="submit">Submit Item</button>
       </form>
+      <DeleteButton/>
     </>
   );
 }
