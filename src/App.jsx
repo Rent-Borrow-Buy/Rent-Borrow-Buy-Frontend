@@ -6,12 +6,14 @@ import Home from './views/Home';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateItem from './views/UpdateItem';
 import ItemDetail from './views/ItemDetail';
+import Header from './components/Header/Header';
 
 export default function App() {
   const { loading } = useAuth();
   if (loading) return <div>loading</div>;
   return (
     <>
+    <Header />
       <Switch>
         <PrivateRoute path="/items/:id/edit">
           <UpdateItem />

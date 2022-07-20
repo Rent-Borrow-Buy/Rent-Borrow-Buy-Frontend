@@ -30,9 +30,9 @@ export const useAuth = () => {
     setUser(newUser);
   };
 
-  const logout = () => {
+  const logout = async () => {
     setUser({ email: null });
-    signOut();
+    await signOut();
   };
 
   return {

@@ -13,7 +13,6 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const { 
-    logout,
     errorMessage, 
     setErrorMessage,
   } = useAuth();
@@ -47,7 +46,6 @@ export default function Home() {
       <span onClick={() => setRentableFilter(!rentableFilter)}>rent</span>
       <span onClick={() => setBorrowableFilter(!borrowableFilter)}>borrow</span>
       <span onClick={() => setBuyableFilter(!buyableFilter)}>buy</span>
-      <button onClick={() => logout()}>log out</button>
       {
         filteredItems.length ?
         filteredItems.map((item) => <ItemCard key={item.id} {...item} />) :
