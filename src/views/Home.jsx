@@ -6,12 +6,12 @@ import ItemCard from '../components/ItemCard/ItemCard';
 
 export default function Home() {
   const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   const { 
     logout,
     errorMessage, 
     setErrorMessage,
-    loading,
-    setLoading
   } = useAuth();
 
   useEffect(() => {
@@ -27,9 +27,10 @@ export default function Home() {
     }
   }, []);
 
+  if (loading) return <span>loading...</span>
+
   return (
     <>
-      {loading && <span>loading...</span>}
       {errorMessage && <span>{errorMessage}</span>}
       <div>Home</div>
       <button onClick={() => logout()}>log out</button>

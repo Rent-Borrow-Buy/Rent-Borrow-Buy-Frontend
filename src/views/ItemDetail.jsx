@@ -6,8 +6,9 @@ import { getItemById } from '../services/items';
 
 export default function ItemDetail() {
     const [item, setItem] = useState({});
+    const [loading, setLoading] = useState(true);
 
-    const { user, errorMessage, setErrorMessage, loading, setLoading } = useAuth();
+    const { user, errorMessage, setErrorMessage } = useAuth();
     const { id } = useParams();
     const isCreator = user.id === item.user_id;
 
@@ -24,20 +25,28 @@ export default function ItemDetail() {
      }
     }, [id]);
 
+   if (loading) return <span>loading...</span>;
+
   return (
     <>
-    {loading && <span>loading...</span>}
     {errorMessage && <span>{errorMessage}</span>}
     <h1>{item.title} details</h1>
-    {/* <img src={item.images}/> */}
+    <img src={item.images[0].url} />
     <p>{item.description}</p>
-    <p>{item.buy}</p>
-    <p>{item.rent}</p>
-    <p>{item.borrow}</p>
+    <p>{item.buy ? 'This item is for sale' : "This item is not for sale"}</p>
+    <p>{item.rent ? 'This item is for rent' : "This item is not for rent"}</p>
+    <p>{item.borrow ? 'This item can be borrowed' : "This item cannot be borrowed"}</p>
     <p>{item.price}</p> 
     {/* price is null */}
     <p>{item.zipcode}</p>
     <p>{item.listed_date}</p>
+    <div>
+        <Link to="/">
+            <button>
+                Return home
+            </button>
+        </Link>
+    </div>
     </>
   );
 }
