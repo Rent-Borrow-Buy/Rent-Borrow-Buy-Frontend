@@ -6,6 +6,8 @@ import ItemCard from '../components/ItemCard/ItemCard';
 
 export default function Home() {
   const [items, setItems] = useState([]);
+  const [types, setTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState('all');
   const { 
     logout,
     errorMessage, 
@@ -31,7 +33,9 @@ export default function Home() {
     <>
       {loading && <span>loading...</span>}
       {errorMessage && <span>{errorMessage}</span>}
-      <div>Home</div>
+      <span onClick={() => setRentableFilter(!rentableFilter)}>rent</span>
+      <span onClick={() => setBorrowableFilter(!borrowableFilter)}>borrow</span>
+      <span onClick={() => setBuyableFilter(!buyableFilter)}>buy</span>
       <button onClick={() => logout()}>log out</button>
       {items.map((item) => (
         <ItemCard key={item.id} {...item} />

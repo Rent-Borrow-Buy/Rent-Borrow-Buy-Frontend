@@ -4,12 +4,15 @@ export default function ItemCard({ ...item }) {
   return (
     <div>
         <Link to={`item/${item.id}`}>
-            <img src={item.url} />
+          <img src={item.url} />
         </Link>
         <Link to={`item/${item.id}`}>           
-            <p>{item.title}</p>
+          <span>{item.title}</span>
         </Link>
-            <p>{item.listed_date}</p>          
+        <span>{item.listed_date}</span>
+        {item.rent && <span>rent</span>} 
+        {item.borrow && <span>borrow</span>}
+        {item.buy && <span>buy</span>}  
     </div>
   )
 }
