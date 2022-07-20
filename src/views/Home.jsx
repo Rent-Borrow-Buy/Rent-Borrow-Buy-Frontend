@@ -10,13 +10,12 @@ export default function Home() {
   const [rentableFilter, setRentableFilter] = useState(false);
   const [borrowableFilter, setBorrowableFilter] = useState(false);
   const [buyableFilter, setBuyableFilter] = useState(false);
-  
+  const [loading, setLoading] = useState(true);
+
   const { 
     logout,
     errorMessage, 
     setErrorMessage,
-    loading,
-    setLoading
   } = useAuth();
 
   useEffect(() => {
@@ -39,10 +38,11 @@ export default function Home() {
     }
     filter();
   }, [rentableFilter, borrowableFilter, buyableFilter]);
+  if (loading) return <span>loading...</span>
+
 
   return (
     <>
-      {loading && <span>loading...</span>}
       {errorMessage && <span>{errorMessage}</span>}
       <span onClick={() => setRentableFilter(!rentableFilter)}>rent</span>
       <span onClick={() => setBorrowableFilter(!borrowableFilter)}>borrow</span>
