@@ -16,6 +16,7 @@ export default function ItemDetail() {
         const fetchData = async () => {
             const item = await getItemById(id);
             setItem(item);
+            setLoading(false)
         }
         fetchData();
      } catch (e) {
@@ -24,6 +25,19 @@ export default function ItemDetail() {
     }, [id]);
 
   return (
-    <div>ItemDetail</div>
+    <>
+    {loading && <span>loading...</span>}
+    {errorMessage && <span>{errorMessage}</span>}
+    <h1>{item.title} details</h1>
+    {/* <img src={item.images}/> */}
+    <p>{item.description}</p>
+    <p>{item.buy}</p>
+    <p>{item.rent}</p>
+    <p>{item.borrow}</p>
+    <p>{item.price}</p> 
+    {/* price is null */}
+    <p>{item.zipcode}</p>
+    <p>{item.listed_date}</p>
+    </>
   );
 }
