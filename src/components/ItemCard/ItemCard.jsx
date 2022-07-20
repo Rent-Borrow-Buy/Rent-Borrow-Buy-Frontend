@@ -18,7 +18,7 @@ export default function ItemCard({ ...item }) {
       <Link to={`items/${item.id}`}>
         <span>{item.title}</span>
       </Link>
-      <span>{item.listed_date}</span>
+      <span>{new Date(item.listed_date).toDateString()}</span>
       {item.rent && <span>rent</span>}
       {item.borrow && <span>borrow</span>}
       {item.buy && <span>buy</span>}
