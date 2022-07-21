@@ -117,17 +117,7 @@ history.push('/');
           onChange={handleChange}
           placeholder="Zip Code"
         />
-        <ImageUpload
-          setPreviewSource={setPreviewSource}
-          setSelectedFile={setSelectedFile}
-        />
-        {previewSource && (
-          <img
-            src={previewSource}
-            alt="chosen file"
-            style={{ height: '300px' }}
-          />
-        )}
+        
         <button type="submit">Submit Item</button>
       </form>
       <DeleteButton/>
