@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
+import DeleteButton from '../components/DeleteButton/DeleteButton';
 import Logout from '../components/LogoutButton/LogoutButton';
 import { useAuth } from '../hooks/user';
 import { deleteItems, getItemById } from '../services/items';
@@ -12,11 +13,6 @@ export default function ItemDetail() {
   const { user, errorMessage, setErrorMessage } = useAuth();
   const { id } = useParams();
   const isCreator = user?.id === item.user_id;
-
-  const handleDelete = async () => {
-    await deleteItems(id);
-    history.replace('/');
-  };
 
   useEffect(() => {
     try {
@@ -35,7 +31,7 @@ export default function ItemDetail() {
 
   return (
     <>
-    <Logout/>
+      <Logout />
       {errorMessage && <span>{errorMessage}</span>}
       <h1>{item.title} details</h1>
       <img src={item.images[0].url} />
@@ -62,7 +58,7 @@ export default function ItemDetail() {
             <Link to={`/items/${id}/edit`}>
               <button>Edit</button>
             </Link>
-            <button onClick={handleDelete}>Delete</button>
+            <DeleteButton />
           </>
         )}
       </div>

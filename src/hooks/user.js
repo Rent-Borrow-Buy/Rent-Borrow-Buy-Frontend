@@ -16,9 +16,14 @@ export const useAuth = () => {
   const isLoggedIn = user?.email;
 
   const login = async (email, password) => {
-    const authenticatedUser = await signIn(email, password);
-    console.log(authenticatedUser, 'auth user');
-    setUser(authenticatedUser);
+    try {
+      const authenticatedUser = await signIn(email, password);
+      console.log(authenticatedUser, 'auth user');
+      setUser(authenticatedUser);
+      toast.success('Welcome back!');
+    } catch (e) {
+      toast.error('Login unsuccessful');
+    }
   };
 
   const signUpUser = async (user) => {

@@ -7,6 +7,7 @@ import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DeleteButton from '../components/DeleteButton/DeleteButton';
 import { useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 export default function UpdateItem() {
   const history = useHistory();
   const { id } = useParams();
@@ -32,18 +33,27 @@ export default function UpdateItem() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('you clicked submit!');
-    const item_res = await fetch(process.env.API_URL + `/api/v1/items/${id}`, {
-      method: 'PUT',
-      body: JSON.stringify({ ...formState, encodedImage: previewSource }),
-      credentials: 'include',
-      mode: 'cors',
-      headers: { 'Content-type': 'application/json' },
-    });
-history.push('/');
+    try {
+      const item_res = await fetch(
+        process.env.API_URL + `/api/v1/items/${id}`,
+        {
+          method: 'PUT',
+          body: JSON.stringify({ ...formState, encodedImage: previewSource }),
+          credentials: 'include',
+          mode: 'cors',
+          headers: { 'Content-type': 'application/json' },
+        }
+      );
+      toast.success('Successfully updated item!');
+      history.push('/');
+    } catch (e) {
+      toast.error('Error encountered on update. Please try again.');
+    }
   };
 
   return (
     <>
+      <h1>Are you listening to me?</h1>
       <form onSubmit={handleSubmit} className={styles.addItemForm}>
         <label htmlFor="title" />
         <input
@@ -130,7 +140,7 @@ history.push('/');
         )}
         <button type="submit">Submit Item</button>
       </form>
-      <DeleteButton/>
+      <DeleteButton />
     </>
   );
 }
