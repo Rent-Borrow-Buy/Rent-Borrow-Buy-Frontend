@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import Logout from '../components/LogoutButton/LogoutButton';
-import { useAuth } from '../hooks/user';
 import { deleteItems, getItemById } from '../services/items';
+import { useAuth } from '../hooks/user';
+import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {
@@ -44,8 +44,7 @@ export default function ItemDetail() {
   if (loading) return <span>loading...</span>;
 
   return (
-    <>
-    <Logout/>
+    <div className={styles.itemDetail}>
       {errorMessage && <span>{errorMessage}</span>}
       <div className={styles.titlePrice}>
         <h2>{item.title}</h2>
@@ -81,6 +80,6 @@ export default function ItemDetail() {
           </>
         )}
       </div>
-    </>
+    </div>
   );
 }

@@ -1,16 +1,27 @@
+.itemDetail {
+  background-color: var(--color6);
+  width: 95%;
+  margin: 12px auto;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
 .titlePrice {
-  margin: auto;
+  margin: 8px auto;
   display: flex;
   width: 80%;
   justify-content: space-between;
-}
-
-.titlePrice:nth-child(1) {
-  color: red;
 }
 
 .zipcode {
   font-size: 1.2rem;
   font-weight: 400;
   margin-left: 8px;
+}
+
+.itemDetail img {
+  width: 90%;
+  margin: auto;
+  border: 1px solid var(--color5);
 }
