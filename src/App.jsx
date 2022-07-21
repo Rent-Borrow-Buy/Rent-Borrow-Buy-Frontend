@@ -9,18 +9,26 @@ import ItemDetail from './views/ItemDetail';
 import Header from './components/Header/Header';
 import CreatorsPage from './views/CreatorsPage/CreatorsPage';
 import styles from './App.css';
-import ToastTest from './views/ToastTest';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function App() {
   const { loading } = useAuth();
   if (loading) return <div>loading</div>;
   return (
     <>
+      <Toaster
+        toastOptions={{
+          duration: 2000,
+          success: {
+            icon: '	✅',
+          },
+          error: {
+            icon: '❌',
+          },
+        }}
+      />
       <Header />
       <Switch>
-        <Route path="/toast">
-          <ToastTest />
-        </Route>
         <Route exact path="/creators">
           <CreatorsPage />
         </Route>

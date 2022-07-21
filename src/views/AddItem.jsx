@@ -4,7 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
@@ -34,27 +34,15 @@ export default function AddItem() {
       });
       toast.success('Successfully added item!');
       setSubmitting(false);
-      // history.push('/');
+      history.push('/');
     } catch (e) {
-      toast.error('Something went wrong');
+      toast.error('Failed to add item. Please try again.');
       setSubmitting(false);
     }
   };
 
   return (
     <>
-      <Toaster
-        toastOptions={{
-          success: {
-            duration: 1000,
-            icon: '	✅',
-          },
-          error: {
-            duration: 1000,
-            icon: '❌',
-          },
-        }}
-      />
       <form onSubmit={handleSubmitFile} className={styles.addItemForm}>
         <label htmlFor="title" />
         <input

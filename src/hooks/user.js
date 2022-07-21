@@ -1,24 +1,17 @@
 import { UserContext } from '../context/UserContext';
 import { useContext } from 'react';
 import { signUp, signIn, signOut } from '../services/users';
-
+import toast from 'react-hot-toast';
 
 export const useAuth = () => {
-
   const context = useContext(UserContext);
 
   if (context === undefined) {
     throw new Error('useAuth must be used within a userProvider');
   }
 
-  const { 
-    user, 
-    setUser, 
-    errorMessage, 
-    setErrorMessage, 
-    loading, 
-    setLoading
-  } = context;
+  const { user, setUser, errorMessage, setErrorMessage, loading, setLoading } =
+    context;
 
   const isLoggedIn = user?.email;
 
@@ -29,14 +22,19 @@ export const useAuth = () => {
   };
 
   const signUpUser = async (user) => {
-    const newUser = await signUp(user);
-    setUser(newUser);
+    try {
+      const newUser = await signUp(user);
+      console.log('newUser', newUser);
+      setUser(newUser);
+      toast.success(`Successfully created account for ${newUser.email}`);
+    } catch (e) {
+      toast.error('Failed to sign up user. Please try again.');
+    }
   };
 
   const logout = async () => {
     setUser(null);
     await signOut();
-
   };
 
   return {
@@ -48,6 +46,6 @@ export const useAuth = () => {
     signUpUser,
     logout,
     loading,
-    setLoading
+    setLoading,
   };
 };
