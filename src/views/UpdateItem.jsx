@@ -2,12 +2,13 @@ import React from 'react';
 import { useState } from 'react';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
-import styles from './AddItem.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DeleteButton from '../components/DeleteButton/DeleteButton';
 import { useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import styles from './AddItem.css';
+
 export default function UpdateItem() {
   const history = useHistory();
   const { id } = useParams();
@@ -55,6 +56,9 @@ export default function UpdateItem() {
     <>
       <h1>Are you listening to me?</h1>
       <form onSubmit={handleSubmit} className={styles.addItemForm}>
+        <Link to="/">
+          <button className={styles.homeButton}>&lt;&lt; return home</button>
+        </Link>
         <label htmlFor="title" />
         <input
           type="text"
@@ -128,6 +132,7 @@ export default function UpdateItem() {
           placeholder="Zip Code"
         />
         <ImageUpload
+          className={styles.upload}
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
@@ -138,9 +143,11 @@ export default function UpdateItem() {
             style={{ height: '300px' }}
           />
         )}
-        <button type="submit">Submit Item</button>
+        <div className={styles.addItemButtons}>
+          <button className={styles.addItemButton} type="submit">submit</button>
+          <DeleteButton/>
+        </div>
       </form>
-      <DeleteButton />
     </>
   );
 }

@@ -24,6 +24,22 @@ export default function ItemDetail() {
     return '$' + price;
   }
 
+  function formatDetailDate(date) {
+    let timeArray = item.listed_date.split(':');
+    let hour = timeArray[0];
+    let minute = timeArray[1];
+    hour = hour.slice(-2);
+    minute = minute.slice(0, 2);
+    const time = hour + ':' + minute;
+
+    let newDate = new Date(item.listed_date).toDateString();
+    newDate = newDate.split(' ');
+    newDate.pop();
+    newDate.shift();
+    newDate = newDate[0] + ' ' + newDate[1];
+    return [newDate, time];
+  }
+
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -56,20 +72,20 @@ export default function ItemDetail() {
         <h2>{item.title}</h2>
       </div>
       <img src={item.images[0].url} />
-      <p>{item.description}</p>
-      <p>{item.buy ? 'This item is for sale' : 'This item is not for sale'}</p>
-      <p>{item.rent ? 'This item is for rent' : 'This item is not for rent'}</p>
-      <p>
-        {item.borrow
-          ? 'This item can be borrowed'
-          : 'This item cannot be borrowed'}
+      <div className={styles.status}>
+        {item.rent && <span>rent</span>}
+        {item.borrow && <span>borrow</span>}
+        {item.buy && <span>buy</span>}
+      </div>
+      <p className={styles.description}>{item.description}</p>
+      <p className={styles.listed}>listed at {
+            formatDetailDate(item.listed_date)[1] + ' on ' +
+            formatDetailDate(item.listed_date)[0]
+          }
       </p>
-      {/* price is null */}
-      <p>{item.zipcode}</p>
-      <p>{item.listed_date}</p>
       <div>
         {isCreator && (
-          <>
+          <div className={styles.detailButtons}>
             <Link to={`/items/${id}/edit`}>
               <button>Edit</button>
             </Link>
