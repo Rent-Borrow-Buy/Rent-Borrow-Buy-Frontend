@@ -5,6 +5,7 @@ import { getAllItems } from '../services/items';
 import ItemCard from '../components/ItemCard/ItemCard';
 import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './Home.css';
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -59,6 +60,9 @@ export default function Home() {
     <>
     <Logout/>
       {errorMessage && <span>{errorMessage}</span>}
+      <Link to="/creators" >
+      <button>About Creators</button>
+    </Link>
       <div className={styles.filters}>
         <span
           className={rentableFilter ? styles.active : ''}
@@ -79,7 +83,6 @@ export default function Home() {
           buy
         </span>
       </div>
-      <button onClick={() => logout()}>log out</button>
 
       <input
         type="text"

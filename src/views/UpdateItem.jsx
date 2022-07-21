@@ -6,8 +6,9 @@ import styles from './AddItem.css';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DeleteButton from '../components/DeleteButton/DeleteButton';
-
+import { useHistory } from 'react-router-dom';
 export default function UpdateItem() {
+  const history = useHistory();
   const { id } = useParams();
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
@@ -38,8 +39,7 @@ export default function UpdateItem() {
       mode: 'cors',
       headers: { 'Content-type': 'application/json' },
     });
-
-    console.log('item_res', item_res);
+history.push('/');
   };
 
   return (
