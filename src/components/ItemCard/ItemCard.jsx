@@ -25,7 +25,9 @@ export default function ItemCard({ ...item }) {
         <img className={styles.itemImage} src={item.url} />
       </Link>
       <div className={styles.priceTitleDate}>
-        {item.price && <span className={styles.price}>{formatPrice(item.price)}</span>} 
+        {item.price ?
+        <span className={styles.price}>{formatPrice(item.price)}</span> :
+        <span className={styles.price}>free</span>}
         <Link to={`items/${item.id}`}>
           <span className={styles.title}>{item.title}</span>
         </Link>
