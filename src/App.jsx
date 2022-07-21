@@ -9,16 +9,20 @@ import ItemDetail from './views/ItemDetail';
 import Header from './components/Header/Header';
 import CreatorsPage from './views/CreatorsPage/CreatorsPage';
 import styles from './App.css';
+import ToastTest from './views/ToastTest';
 
 export default function App() {
   const { loading } = useAuth();
   if (loading) return <div>loading</div>;
   return (
     <>
-    <Header />
+      <Header />
       <Switch>
-        <Route  exact path ='/creators'>
-          <CreatorsPage/>
+        <Route path="/toast">
+          <ToastTest />
+        </Route>
+        <Route exact path="/creators">
+          <CreatorsPage />
         </Route>
         <PrivateRoute path="/items/:id/edit">
           <UpdateItem />
