@@ -10,6 +10,7 @@ export default function ItemCard({ ...item }) {
     }
     return '$' + price;
   }
+  console.log(item, 'logic');
   return (
     <div>
       <Link to={`items/${item.id}`}>
@@ -22,7 +23,8 @@ export default function ItemCard({ ...item }) {
       {item.rent && <span>rent</span>}
       {item.borrow && <span>borrow</span>}
       {item.buy && <span>buy</span>}
-      <span>{formatPrice(item.price)}</span>
+     { item.price && <span>{formatPrice(item.price)}</span>
+     } 
     </div>
   );
 }
