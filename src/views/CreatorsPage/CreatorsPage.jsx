@@ -12,9 +12,11 @@ import styles from '../../views/CreatorsPage/CreatorsPage.css';
 export default function CreatorsPage() {
     return (
     <div className={styles.allcreators}>
+      <div className={styles.home}>
       <Link to="/" >
-      <button>Return Home</button>
+      <p>Return Home</p>
     </Link>
+      </div>
       <h1>Meet the Creators!</h1>
       <p>The Rent Borrow Buy team created a full stack application all that allows users to sell items through an app. R.B.B is an...</p>
     <div className={styles.creator}>

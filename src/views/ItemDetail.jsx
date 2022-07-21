@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { deleteItems, getItemById } from '../services/items';
 import { useAuth } from '../hooks/user';
-import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {
