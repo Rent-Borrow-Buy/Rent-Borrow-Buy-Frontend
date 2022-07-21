@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useAuth } from '../hooks/user';
 import { getAllItems } from '../services/items';
 import ItemCard from '../components/ItemCard/ItemCard';
-import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './Home.css';
 import { Link } from "react-router-dom";
 
@@ -13,18 +12,20 @@ export default function Home() {
   const [rentableFilter, setRentableFilter] = useState(true);
   const [borrowableFilter, setBorrowableFilter] = useState(true);
   const [buyableFilter, setBuyableFilter] = useState(true);
-  const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState('');
-
+  const [loading, setLoading] = useState(true);
   const { errorMessage, setErrorMessage } = useAuth();
-
+  
+  // formatting text for comparing search text to data text
   function process(s) {
     return s.toLowerCase().trim();
   }
+
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
   };
-
+  
+  // loads items for sale on page load
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -39,6 +40,7 @@ export default function Home() {
     }
   }, []);
 
+  // displays different items depending on user-selected filter
   useEffect(() => {
     const filter = () => {
       const newItems = items.filter(
@@ -54,46 +56,48 @@ export default function Home() {
     };
     filter();
   }, [rentableFilter, borrowableFilter, buyableFilter, searchText]);
+
   if (loading) return <span>loading...</span>;
 
   return (
     <>
-    <Logout/>
-      {errorMessage && <span>{errorMessage}</span>}
-      <Link to="/creators" >
-      <button>About Creators</button>
-    </Link>
-      <div className={styles.filters}>
-        <span
-          className={rentableFilter ? styles.active : ''}
-          onClick={() => setRentableFilter(!rentableFilter)}
-        >
-          rent
-        </span>
-        <span
-          className={borrowableFilter ? styles.active : ''}
-          onClick={() => setBorrowableFilter(!borrowableFilter)}
-        >
-          borrow
-        </span>
-        <span
-          className={buyableFilter ? styles.active : ''}
-          onClick={() => setBuyableFilter(!buyableFilter)}
-        >
-          buy
-        </span>
-      </div>
-
+    {errorMessage && <span>{errorMessage}</span>}
+    <div className={styles.searchFilters}>
       <input
         type="text"
         placeholder="Search"
         value={searchText}
         onChange={handleSearchChange}
       />
+      <div className={styles.filters}>
+        <span
+          className={rentableFilter ? styles.active : styles.off}
+          onClick={() => setRentableFilter(!rentableFilter)}
+        >
+          rent
+        </span>
+        <span
+          className={borrowableFilter ? styles.active : styles.off}
+          onClick={() => setBorrowableFilter(!borrowableFilter)}
+        >
+          borrow
+        </span>
+        <span
+          className={buyableFilter ? styles.active : styles.off}
+          onClick={() => setBuyableFilter(!buyableFilter)}
+        >
+          buy
+        </span>
+      </div>
+    </div>
 
-      {filteredItems.map((item) => (
-        <ItemCard key={item.id} {...item} />
-      ))}
+
+    {filteredItems.map((item) => (
+      <ItemCard key={item.id} {...item} />
+    ))}
+    <Link to="/creators" >
+      <button>About Creators</button>
+    </Link>
     </>
   );
 }
