@@ -18,6 +18,9 @@ export default function Header() {
     <Link to="/auth">
         <button>sign-up/login</button>
     </Link>}
+    {/* <Link to="/creators" >
+      <button>About Creators</button>
+    </Link> */}
     </>
   )
 

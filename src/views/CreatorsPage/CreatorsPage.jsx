@@ -3,12 +3,17 @@ import andrea from '../../assets/andrea.jpeg';
 import cole from '../../assets/cole.jpeg';
 import marcus from '../../assets/marcus.jpeg';
 import yovana from '../../assets/yovana.jpeg';
+import { Link } from "react-router-dom";
+
 
 import styles from '../../views/CreatorsPage/CreatorsPage.css';
 
 
 export default function CreatorsPage() {
-    return (
+    return (<>
+      <Link to="/" >
+      <button>Return Home</button>
+    </Link>
     <div className={styles.creator}>
       <h1>Meet the Creators!</h1>
 
@@ -23,11 +28,11 @@ export default function CreatorsPage() {
               src={andrea}
               style={{
                 objectFit: 'cover',
-                width: '98%',
-                height: '98%',
-                border: 'solid black',
+                width: '50%',
+                height: '50%',
+                border: 'solid rgb(58, 216, 244)',
               }}
-            />
+              />
           </a>
         </div>
       </div>
@@ -42,11 +47,11 @@ export default function CreatorsPage() {
               src={cole}
               style={{
                 objectFit: 'cover',
-                width: '98%',
-                height: '98%',
-                border: 'solid black',
+                width: '50%',
+                height: '50%',
+                border: 'solid rgb(58, 216, 244)',
               }}
-            />
+              />
           </a>
         </div>
       </div>
@@ -60,11 +65,11 @@ export default function CreatorsPage() {
             <img
               src={marcus}
               style={{
-                width: '98%',
-                height: '98%',
-                border: 'solid black',
+                width: '50%',
+                height: '50%',
+                border: 'solid rgb(58, 216, 244)',
               }}
-            />
+              />
           </a>
         </div>
       </div>
@@ -76,11 +81,11 @@ export default function CreatorsPage() {
             <img
               src={yovana}
               style={{
-                width: '98%',
-                height: '98%',
-                border: 'solid black',
+                width: '50%',
+                height: '50%',
+                border: 'solid rgb(58, 216, 244)',
               }}
-            />
+              />
           </a>
         </div>
       </div>
@@ -88,5 +93,6 @@ export default function CreatorsPage() {
         <div></div>
       </footer>
     </div>
+              </>
   );
 }
