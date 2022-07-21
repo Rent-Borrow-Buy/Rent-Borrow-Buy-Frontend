@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { deleteItems, getItemById } from '../services/items';
-import { useAuth } from '../hooks/user';
+import DeleteButton from '../components/DeleteButton/DeleteButton';
 import Logout from '../components/LogoutButton/LogoutButton';
+import { useAuth } from '../hooks/user';
+import { deleteItems, getItemById } from '../services/items';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {
@@ -12,11 +13,6 @@ export default function ItemDetail() {
   const { user, errorMessage, setErrorMessage } = useAuth();
   const { id } = useParams();
   const isCreator = user?.id === item.user_id;
-
-  const handleDelete = async () => {
-    await deleteItems(id);
-    history.replace('/');
-  };
 
   function formatPrice(price) {
     const array = price.split('.');
@@ -60,6 +56,7 @@ export default function ItemDetail() {
   if (loading) return <span>loading...</span>;
 
   return (
+
     <div className={styles.itemDetail}>
       {errorMessage && <span>{errorMessage}</span>}
       <div className={styles.homePrice}>
@@ -92,8 +89,8 @@ export default function ItemDetail() {
             <Link to={`/items/${id}/edit`}>
               <button>Edit</button>
             </Link>
-            <button onClick={handleDelete}>Delete</button>
-          </div>
+            <DeleteButton />
+          </>
         )}
       </div>
     </div>
