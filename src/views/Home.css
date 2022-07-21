@@ -1,3 +1,7 @@
+body {
+  background-color: var(--color5);
+}
+
 .active {
   border: 1px solid black;
 }
