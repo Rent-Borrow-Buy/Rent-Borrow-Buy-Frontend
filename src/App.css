@@ -11,3 +11,11 @@
   font-family: 'Source Sans Pro';
   margin: 0;
 }
+
+input:focus {
+  outline-color: var(--color2);
+}
+
+textarea:focus {
+  outline-color: var(--color2);
+}

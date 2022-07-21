@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory, useParams } from 'react-router-dom';
-import { deleteItems, getItemById } from '../services/items';
+import DeleteButton from '../components/DeleteButton/DeleteButton';
+import Logout from '../components/LogoutButton/LogoutButton';
 import { useAuth } from '../hooks/user';
+import { deleteItems, getItemById } from '../services/items';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {
@@ -12,11 +14,6 @@ export default function ItemDetail() {
   const { id } = useParams();
   const isCreator = user?.id === item.user_id;
 
-  const handleDelete = async () => {
-    await deleteItems(id);
-    history.replace('/');
-  };
-
   function formatPrice(price) {
     const array = price.split('.');
     if (array.length > 1) {
@@ -25,6 +22,22 @@ export default function ItemDetail() {
       }
     }
     return '$' + price;
+  }
+
+  function formatDetailDate(date) {
+    let timeArray = item.listed_date.split(':');
+    let hour = timeArray[0];
+    let minute = timeArray[1];
+    hour = hour.slice(-2);
+    minute = minute.slice(0, 2);
+    const time = hour + ':' + minute;
+
+    let newDate = new Date(item.listed_date).toDateString();
+    newDate = newDate.split(' ');
+    newDate.pop();
+    newDate.shift();
+    newDate = newDate[0] + ' ' + newDate[1];
+    return [newDate, time];
   }
 
   useEffect(() => {
@@ -43,40 +56,41 @@ export default function ItemDetail() {
   if (loading) return <span>loading...</span>;
 
   return (
+
     <div className={styles.itemDetail}>
       {errorMessage && <span>{errorMessage}</span>}
-      <div className={styles.titlePrice}>
-        <h2>{item.title}</h2>
+      <div className={styles.homePrice}>
+        <Link to="/">
+          <button className={styles.homeButton}>&lt;&lt; return home</button>
+        </Link>
         <h2>
-          {formatPrice(item.price)} 
-          <span className={styles.zipcode}>({item.zipcode})</span>
+          <span className={styles.zipcode}>({item.zipcode}) </span>
+          {item.price ? formatPrice(item.price) : 'free'} 
         </h2>
       </div>
-      <img src={item.images[0].url} />
-      <p>{item.description}</p>
-      <p>{item.buy ? 'This item is for sale' : 'This item is not for sale'}</p>
-      <p>{item.rent ? 'This item is for rent' : 'This item is not for rent'}</p>
-      <p>
-        {item.borrow
-          ? 'This item can be borrowed'
-          : 'This item cannot be borrowed'}
-      </p>
-      {/* price is null */}
-      <p>{item.zipcode}</p>
-      <p>{item.listed_date}</p>
-      <div>
-        <Link to="/">
-          <button>Return home</button>
-        </Link>
+      <div className={styles.title}>
+        <h2>{item.title}</h2>
       </div>
+      <img src={item.images[0].url} />
+      <div className={styles.status}>
+        {item.rent && <span>rent</span>}
+        {item.borrow && <span>borrow</span>}
+        {item.buy && <span>buy</span>}
+      </div>
+      <p className={styles.description}>{item.description}</p>
+      <p className={styles.listed}>listed at {
+            formatDetailDate(item.listed_date)[1] + ' on ' +
+            formatDetailDate(item.listed_date)[0]
+          }
+      </p>
       <div>
         {isCreator && (
-          <>
+          <div className={styles.detailButtons}>
             <Link to={`/items/${id}/edit`}>
-              <button>Edit</button>
+              <button>edit</button>
             </Link>
-            <button onClick={handleDelete}>Delete</button>
-          </>
+            <DeleteButton />
+          </div>
         )}
       </div>
     </div>

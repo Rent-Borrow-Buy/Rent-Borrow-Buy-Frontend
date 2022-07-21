@@ -91,7 +91,6 @@ export default function Home() {
       </div>
     </div>
 
-
     {filteredItems.map((item) => (
       <ItemCard key={item.id} {...item} />
     ))}
