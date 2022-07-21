@@ -1,6 +1,6 @@
 header {
   background-color: var(--color1);
-  padding-bottom: 8px;
+  height: 80px;
   border-bottom: 1px solid var(--color4);
 }
 
@@ -14,16 +14,11 @@ header h1 {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  
+  position: relative;
+  bottom: 20px;
 }
 
-.headerElements p {
-  color: white;
-  font-size: 0.8rem;
-  font-weight: 300;
-  font-style: italic;
-}
-
+.headerElements button,
 .headerElements a button {
   color: var(--color2);
   background-color: var(--color6);
@@ -32,4 +27,13 @@ header h1 {
   font-size: 0.6rem;
   padding: 4px 4px;
   margin-right: 8px;
+}
+
+.welcome {
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 300;
+  font-style: italic;
+  position: relative;
+  bottom: 20px;
 }

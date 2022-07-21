@@ -1,5 +1,6 @@
 import { useAuth } from "../../hooks/user";
 import { Link } from "react-router-dom";
+import Logout from "../LogoutButton/LogoutButton";
 import styles from "./Header.css";
 
 export default function Header() {
@@ -7,9 +8,11 @@ export default function Header() {
     
   return (
     <header>
+      <h1>r.b.b.</h1>
       <div className={styles.headerElements}>
-        <p>Welcome {user ? user.firstName : 'new user'}!</p>
-        <h1>r.b.b.</h1>
+        <div className={styles.logoutContainer}>
+          {user && <Logout />}
+        </div>
         { 
           user ?
           <Link to="/items/new">
@@ -20,6 +23,13 @@ export default function Header() {
           </Link>
         }
       </div>
+      {
+        user && <p className={styles.welcome}>Welcome {
+          user.firstName ? 
+          user.firstName : 
+          user.email
+        }!</p>
+      }
     </header>
   )
 }
