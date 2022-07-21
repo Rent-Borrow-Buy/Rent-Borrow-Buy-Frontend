@@ -4,6 +4,7 @@ import { useHistory, Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
 import styles from './AddItem.css';
+import toast from 'react-hot-toast';
 
 export default function AddItem() {
   const [previewSource, setPreviewSource] = useState();
@@ -23,15 +24,21 @@ export default function AddItem() {
     e.preventDefault();
     setSubmitting(true);
     console.log('you clicked submit!');
-    const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
-      method: 'POST',
-      body: JSON.stringify({ ...formState, encodedImage: previewSource }),
-      credentials: 'include',
-      mode: 'cors',
-      headers: { 'Content-type': 'application/json' },
-    });
-    setSubmitting(false);
-    history.push('/');
+    try {
+      const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
+        method: 'POST',
+        body: JSON.stringify({ ...formState, encodedImage: previewSource }),
+        credentials: 'include',
+        mode: 'cors',
+        headers: { 'Content-type': 'application/json' },
+      });
+      toast.success('Successfully added item!');
+      setSubmitting(false);
+      history.push('/');
+    } catch (e) {
+      toast.error('Failed to add item. Please try again.');
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -48,7 +55,8 @@ export default function AddItem() {
         />
         <section className={styles.checkboxesPrice}>
           <div className={styles.checkboxes}>
-            <label htmlFor="rent">Rent
+            <label htmlFor="rent">
+              Rent
               <input
                 type="checkbox"
                 id="rent"
@@ -57,7 +65,8 @@ export default function AddItem() {
                 onChange={handleChange}
               />
             </label>
-            <label htmlFor="borrow">Borrow
+            <label htmlFor="borrow">
+              Borrow
               <input
                 type="checkbox"
                 id="borrow"
@@ -66,7 +75,8 @@ export default function AddItem() {
                 onChange={handleChange}
               />
             </label>
-            <label htmlFor="buy">Buy
+            <label htmlFor="buy">
+              Buy
               <input
                 type="checkbox"
                 id="buy"
@@ -110,18 +120,18 @@ export default function AddItem() {
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
-      {previewSource && (
-        <img
-          src={previewSource}
-          alt="chosen file"
-          style={{ height: '300px' }}
-        />
-      )}
+        {previewSource && (
+          <img
+            src={previewSource}
+            alt="chosen file"
+            style={{ height: '300px' }}
+          />
+        )}
         <button type="submit">Submit Item</button>
         <Link to="/">
           <button>cancel</button>
         </Link>
-        { submitting && <h3>Submitting item...</h3> }
+        {submitting && <h3>Submitting item...</h3>}
       </form>
     </>
   );
