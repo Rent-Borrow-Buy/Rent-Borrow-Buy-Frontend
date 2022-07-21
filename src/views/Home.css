@@ -2,6 +2,47 @@ body {
   background-color: var(--color5);
 }
 
+.searchFilters {
+  background-color: var(--color6);
+  padding: 8px 12px;
+  border-bottom: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.searchFilters input {
+  width: 60%;
+  font-size: 1.1rem;
+  font-weight: 300;
+  margin: 12px 0px;
+  padding: 4px;
+}
+
+.searchFilters input:focus {
+  outline-color: var(--color2);
+}
+
+.filters {
+  margin-bottom: 4px;
+}
+
+.filters > * {
+  margin: 0px 8px;
+  padding: 4px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.off {
+  border: 2px solid var(--color6);
+  background-color: var(--color6);
+  color: var(--color1);
+  font-weight: 300;
+}
+
 .active {
-  border: 1px solid black;
+  border: 1px solid var(--color1);
+  background-color: var(--color1);
+  color: var(--color6);
 }
