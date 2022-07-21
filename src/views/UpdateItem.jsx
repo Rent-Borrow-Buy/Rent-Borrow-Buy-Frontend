@@ -54,7 +54,6 @@ export default function UpdateItem() {
 
   return (
     <>
-      <h1>Are you listening to me?</h1>
       <form onSubmit={handleSubmit} className={styles.addItemForm}>
         <Link to="/">
           <button className={styles.homeButton}>&lt;&lt; return home</button>

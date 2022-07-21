@@ -87,10 +87,10 @@ export default function ItemDetail() {
         {isCreator && (
           <div className={styles.detailButtons}>
             <Link to={`/items/${id}/edit`}>
-              <button>Edit</button>
+              <button>edit</button>
             </Link>
             <DeleteButton />
-          </>
+          </div>
         )}
       </div>
     </div>
