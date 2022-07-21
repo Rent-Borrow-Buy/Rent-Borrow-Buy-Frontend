@@ -10,89 +10,76 @@ import styles from '../../views/CreatorsPage/CreatorsPage.css';
 
 
 export default function CreatorsPage() {
-    return (<>
+    return (
+    <div className={styles.allcreators}>
       <Link to="/" >
       <button>Return Home</button>
     </Link>
-    <div className={styles.creator}>
       <h1>Meet the Creators!</h1>
-
-      <div>
-        <br />
-        <br />
+      <p>The Rent Borrow Buy team created a full stack application all that allows users to sell items through an app. R.B.B is an...</p>
+    <div className={styles.creator}>
+      <div className={styles.container}>
         <h2>Andrea Cleland</h2>
-        <p>Beauty and grace</p>
-        <div className={styles.border}>
+        <div className={styles.text}>
           <a href="https://www.linkedin.com/in/andrea-cleland/">
             <img
               src={andrea}
               style={{
-                objectFit: 'cover',
-                width: '50%',
-                height: '50%',
-                border: 'solid rgb(58, 216, 244)',
+               
               }}
               />
           </a>
+              <p>Andrea Cleland is a budding full-stack software engineer in Portland, Oregon. In addition to programming, she enjoys video games, audiobooks, hiking, and roller skating.</p>
         </div>
       </div>
-      <br />
-      <br />
-      <div>
+      <div className={styles.container}>
         <h2>Cole</h2>
-        <p>Gym is life and I'm the vibe</p>
-        <div className={styles.border}>
+        <div className={styles.text}>
           <a href="https://www.linkedin.com/in/cole-rossman/">
             <img
               src={cole}
-              style={{
-                objectFit: 'cover',
-                width: '50%',
-                height: '50%',
-                border: 'solid rgb(58, 216, 244)',
-              }}
+              // style={{
+              //   objectFit: 'cover',
+              //   width: '98%',
+              //   height: '50%',
+              //   border: 'solid rgb(58, 216, 244)',
+              // }}
               />
           </a>
+              <p>Gym is life and I'm the vibe</p>
         </div>
       </div>
-      <br />
-      <br />
-      <div>
+      <div className={styles.container}>
         <h2>Marcus</h2>
-        <p>Nail polish on point and dope af</p>
-        <div className={styles}>
+        <div className={styles.text}>
           <a href="https://www.linkedin.com/in/marcus-ghiringhelli/">
             <img
               src={marcus}
-              style={{
-                width: '50%',
-                height: '50%',
-                border: 'solid rgb(58, 216, 244)',
-              }}
               />
           </a>
+              <p>Marcus is a full stack software developer from Portland, Oregon who likes making music and trying to keep plants alive.</p>
         </div>
       </div>
-      <div>
+      <div className={styles.container}>
         <h2>Yovana</h2>
-        <p>Full Stack Software Engineer and I enjoy music and standup comedy.</p>
-        <div className={styles.border}>
+        <div className={styles.text}>
           <a href="https://www.linkedin.com/in/yovana-pelayo">
             <img
               src={yovana}
               style={{
-                width: '50%',
-                height: '50%',
-                border: 'solid rgb(58, 216, 244)',
+                // width: '50%',
+                // height: '50%',
+                // border: 'solid rgb(58, 216, 244)',
               }}
               />
           </a>
+              <p>Yovana is a full Stack Software Engineer from Portland, Oregon who enjoys taking on DIY projects and watching stand up comedy!</p>
         </div>
       </div>
       <footer className={styles}>
         <div></div>
       </footer>
     </div>
-              </>
+    </div>
   );
 }
