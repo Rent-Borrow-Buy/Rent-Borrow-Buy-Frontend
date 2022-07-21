@@ -79,7 +79,6 @@ export default function Home() {
           buy
         </span>
       </div>
-      <button onClick={() => logout()}>log out</button>
 
       <input
         type="text"
