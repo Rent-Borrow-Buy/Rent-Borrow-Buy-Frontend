@@ -32,6 +32,15 @@
   padding: 4px;
 }
 
+.homeButton {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--color6);
+  background-color: var(--color1);
+  border: 1px solid var(--color5);
+  border-radius: 4px;
+}
+
 .checkboxesPrice {
   display: flex;
   justify-content: space-between;
@@ -94,7 +103,7 @@
   padding: 4px 12px;
 }
 
-.addItemButtons button {
+.addItemButton {
   background-color: var(--color1);
   border: 1px solid var(--color1);
 }

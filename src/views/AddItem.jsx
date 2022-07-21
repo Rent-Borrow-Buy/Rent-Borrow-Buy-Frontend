@@ -119,7 +119,7 @@ export default function AddItem() {
           />
         )}
         <div className={styles.addItemButtons}>
-          <button type="submit">submit</button>
+          <button className={styles.addItemButton} type="submit">submit</button>
           <Link to="/">
             <span>cancel</span>
           </Link>

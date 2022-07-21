@@ -2,11 +2,12 @@ import React from 'react';
 import { useState } from 'react';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
-import styles from './AddItem.css';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import DeleteButton from '../components/DeleteButton/DeleteButton';
 import { useHistory } from 'react-router-dom';
+import styles from './AddItem.css';
+
 export default function UpdateItem() {
   const history = useHistory();
   const { id } = useParams();
@@ -45,6 +46,9 @@ history.push('/');
   return (
     <>
       <form onSubmit={handleSubmit} className={styles.addItemForm}>
+        <Link to="/">
+          <button className={styles.homeButton}>&lt;&lt; return home</button>
+        </Link>
         <label htmlFor="title" />
         <input
           type="text"
@@ -118,6 +122,7 @@ history.push('/');
           placeholder="Zip Code"
         />
         <ImageUpload
+          className={styles.upload}
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
@@ -128,9 +133,11 @@ history.push('/');
             style={{ height: '300px' }}
           />
         )}
-        <button type="submit">Submit Item</button>
+        <div className={styles.addItemButtons}>
+          <button className={styles.addItemButton} type="submit">submit</button>
+          <DeleteButton/>
+        </div>
       </form>
-      <DeleteButton/>
     </>
   );
 }
