@@ -8,6 +8,7 @@ import UpdateItem from './views/UpdateItem';
 import ItemDetail from './views/ItemDetail';
 import Header from './components/Header/Header';
 import CreatorsPage from './views/CreatorsPage/CreatorsPage';
+import styles from './App.css';
 
 export default function App() {
   const { loading } = useAuth();
