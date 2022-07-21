@@ -1,0 +1,16 @@
+.titlePrice {
+  margin: auto;
+  display: flex;
+  width: 80%;
+  justify-content: space-between;
+}
+
+.titlePrice:nth-child(1) {
+  color: red;
+}
+
+.zipcode {
+  font-size: 1.2rem;
+  font-weight: 400;
+  margin-left: 8px;
+}
