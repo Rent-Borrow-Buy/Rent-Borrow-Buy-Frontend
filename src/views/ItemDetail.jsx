@@ -46,12 +46,17 @@ export default function ItemDetail() {
   return (
     <div className={styles.itemDetail}>
       {errorMessage && <span>{errorMessage}</span>}
-      <div className={styles.titlePrice}>
-        <h2>{item.title}</h2>
+      <div className={styles.homePrice}>
+        <Link to="/">
+          <button className={styles.homeButton}>&lt;&lt; return home</button>
+        </Link>
         <h2>
-          {formatPrice(item.price)} 
-          <span className={styles.zipcode}>({item.zipcode})</span>
+          <span className={styles.zipcode}>({item.zipcode}) </span>
+          {item.price ? formatPrice(item.price) : 'free'} 
         </h2>
+      </div>
+      <div className={styles.title}>
+        <h2>{item.title}</h2>
       </div>
       <img src={item.images[0].url} />
       <p>{item.description}</p>
@@ -65,11 +70,6 @@ export default function ItemDetail() {
       {/* price is null */}
       <p>{item.zipcode}</p>
       <p>{item.listed_date}</p>
-      <div>
-        <Link to="/">
-          <button>Return home</button>
-        </Link>
-      </div>
       <div>
         {isCreator && (
           <>
