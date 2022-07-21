@@ -95,7 +95,7 @@ export default function Home() {
       <ItemCard key={item.id} {...item} />
     ))}
     <Link to="/creators" >
-      <button>About Creators</button>
+      <button className={styles.aboutButton}>meet the developers!</button>
     </Link>
     </>
   );
