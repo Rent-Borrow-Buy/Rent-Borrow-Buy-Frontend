@@ -47,7 +47,7 @@
 .status {
   display: flex;
   justify-self: start;
-  margin: auto;
+  margin: 4px auto 0px auto;
 }
 
 .status span {

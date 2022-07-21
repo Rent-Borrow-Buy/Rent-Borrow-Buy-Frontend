@@ -107,21 +107,24 @@ export default function AddItem() {
           placeholder="Zip Code"
         />
         <ImageUpload
+          className={styles.upload}
           setPreviewSource={setPreviewSource}
           setSelectedFile={setSelectedFile}
         />
-      {previewSource && (
-        <img
-          src={previewSource}
-          alt="chosen file"
-          style={{ height: '300px' }}
-        />
-      )}
-        <button type="submit">Submit Item</button>
-        <Link to="/">
-          <button>cancel</button>
-        </Link>
-        { submitting && <h3>Submitting item...</h3> }
+        {previewSource && (
+          <img
+            src={previewSource}
+            alt="chosen file"
+            style={{ height: '300px' }}
+          />
+        )}
+        <div className={styles.addItemButtons}>
+          <button type="submit">submit</button>
+          <Link to="/">
+            <span>cancel</span>
+          </Link>
+        </div>
+        { submitting && <p>Submitting item...</p> }
       </form>
     </>
   );
