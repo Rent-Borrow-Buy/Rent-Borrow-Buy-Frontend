@@ -24,7 +24,7 @@
 color:var(--color7);
 padding: 20px;
 }
-h2{
+.allcreators h2{
     text-align:left;
     color:var(--color7);
 
@@ -32,7 +32,7 @@ h2{
 /* @media screen {
     
 } */
-button {
+.allcreators button {
     align-items: flex-end;
     color: var(--color2);
     background-color: var(--color6);
@@ -42,10 +42,10 @@ button {
     padding: 4px 4px;
     margin: 0px 8px;
 }
-img {
+.allcreators img {
  height:200px;
  width:250px ;
 }
-p {
+.allcreators p {
     padding: 10px;
 }
