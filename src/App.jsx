@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateItem from './views/UpdateItem';
 import ItemDetail from './views/ItemDetail';
 import Header from './components/Header/Header';
+import styles from './App.css';
 
 export default function App() {
   const { loading } = useAuth();

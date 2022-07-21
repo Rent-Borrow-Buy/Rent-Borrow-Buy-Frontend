@@ -1,0 +1,13 @@
+* {
+  /* CSS HSL */
+  --color1: #06D2FF;
+  --color2: #FF471F;
+  --color3: #12FFA8;
+  --color4: #335057;
+  --color5: #F0FAFD;
+  --color6: white;
+  --color7: black;
+
+  margin: 0;
+  color: var(--color3);
+}

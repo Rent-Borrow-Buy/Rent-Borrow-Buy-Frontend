@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import styles from './ItemCard.css';
 
 export default function ItemCard({ ...item }) {
   function formatPrice(price) {
@@ -12,7 +13,7 @@ export default function ItemCard({ ...item }) {
   }
   console.log(item, 'logic');
   return (
-    <div>
+    <div className={styles.itemCard}>
       <Link to={`items/${item.id}`}>
         <img src={item.url} />
       </Link>
