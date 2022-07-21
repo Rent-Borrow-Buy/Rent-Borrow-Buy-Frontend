@@ -34,7 +34,12 @@ export const useAuth = () => {
 
   const logout = async () => {
     setUser(null);
-    await signOut();
+    try {
+      await signOut();
+      toast.success('Successfully signed out');
+    } catch (e) {
+      toast.error('Logout unsuccessful');
+    }
   };
 
   return {
