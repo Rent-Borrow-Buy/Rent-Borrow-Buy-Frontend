@@ -84,8 +84,8 @@ export default function AddItem() {
             id="price"
             name="price"
             placeholder="price"
-            // value={formState.price}
-            // onChange={handleChange}
+            value={formState.price}
+            onChange={handleChange}
           />
           <label htmlFor="description" />
         </section>

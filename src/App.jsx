@@ -7,6 +7,7 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import UpdateItem from './views/UpdateItem';
 import ItemDetail from './views/ItemDetail';
 import Header from './components/Header/Header';
+import CreatorsPage from './views/CreatorsPage/CreatorsPage';
 import styles from './App.css';
 
 export default function App() {
@@ -16,6 +17,9 @@ export default function App() {
     <>
     <Header />
       <Switch>
+        <Route  exact path ='/creators'>
+          <CreatorsPage/>
+        </Route>
         <PrivateRoute path="/items/:id/edit">
           <UpdateItem />
         </PrivateRoute>
