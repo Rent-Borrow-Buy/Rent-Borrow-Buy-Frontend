@@ -46,7 +46,7 @@ export default function CreatorsPage() {
               // }}
               />
           </a>
-              <p>Gym is life and I'm the vibe</p>
+              <p>Cole Rossman is a full-stack software engineer located in Lake Oswego, OR. When not creating full-stack JavaScript applications, you can find Cole hiking in the Columbia Gorge, rock climbing or seeking out new food carts to try.</p>
         </div>
       </div>
       <div className={styles.container}>

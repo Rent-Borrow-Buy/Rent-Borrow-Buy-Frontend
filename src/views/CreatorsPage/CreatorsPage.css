@@ -32,7 +32,16 @@ h2{
 /* @media screen {
     
 } */
-
+button {
+    align-items: flex-end;
+    color: var(--color2);
+    background-color: var(--color6);
+    border: 2px solid var(--color1);
+    border-radius: 4px;
+    font-size: 0.6rem;
+    padding: 4px 4px;
+    margin: 0px 8px;
+}
 img {
  height:200px;
  width:250px ;
