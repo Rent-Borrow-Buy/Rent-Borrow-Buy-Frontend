@@ -4,7 +4,6 @@ import DeleteButton from '../components/DeleteButton/DeleteButton';
 import Logout from '../components/LogoutButton/LogoutButton';
 import { useAuth } from '../hooks/user';
 import { deleteItems, getItemById } from '../services/items';
-import { useAuth } from '../hooks/user';
 import Logout from '../components/LogoutButton/LogoutButton';
 import styles from './ItemDetail.css';
 
