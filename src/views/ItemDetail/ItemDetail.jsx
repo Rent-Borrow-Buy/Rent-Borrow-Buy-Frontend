@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { getItemById } from '../services/items';
-import { useAuth } from '../hooks/user';
-import DeleteButton from '../components/DeleteButton/DeleteButton';
+import { getItemById } from '../../services/items';
+import { useAuth } from '../../hooks/user';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {

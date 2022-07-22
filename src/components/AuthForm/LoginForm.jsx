@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
-import { useAuth } from '../hooks/user';
-import { useForm } from '../hooks/useForm';
+import { useAuth } from '../../hooks/user';
+import { useForm } from '../../hooks/useForm';
 import styles from './AuthForm.css';
 
 export default function LoginForm({ initialState, isSigningUp, setIsSigningUp }) {

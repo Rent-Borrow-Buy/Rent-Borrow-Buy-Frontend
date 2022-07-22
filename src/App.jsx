@@ -1,10 +1,10 @@
 import { Route, Switch } from 'react-router-dom';
 import { useAuth } from './hooks/user';
-import Home from './views/Home';
-import Auth from './views/Auth';
-import ItemDetail from './views/ItemDetail';
-import AddItem from './views/AddItem';
-import UpdateItem from './views/UpdateItem';
+import Home from './views/Home/Home';
+import Auth from './views/Auth/Auth';
+import ItemDetail from './views/ItemDetail/ItemDetail';
+import AddItem from './views/ManageItems/AddItem';
+import UpdateItem from './views/ManageItems/UpdateItem';
 import CreatorsPage from './views/CreatorsPage/CreatorsPage';
 import Header from './components/Header/Header';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
