@@ -7,7 +7,6 @@
     margin: 20px;
     width: 300px;
     height: 400px;
-    /* border: 3px solid #28c1f5; */
     padding: 0px;
 }
 .creator {
@@ -37,7 +36,7 @@ padding: 20px;
     flex-direction: row;
     align-content: flex-end;
     color: var(--color2);
-    /* background-color: var(--color6);
+    background-color: var(--color6);
     border: 2px solid var(--color1);
     border-radius: 4px;
     font-size: 0.6rem;
