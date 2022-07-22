@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import ImageUpload from '../components/ImageUpload';
-import { useForm } from '../hooks/useForm';
-import styles from './AddItem.css';
+import ImageUpload from '../../components/ImageUpload/ImageUpload';
+import { useForm } from '../../hooks/useForm';
+import styles from './ManageItems.css';
 import toast from 'react-hot-toast';
 
 export default function AddItem() {
@@ -21,8 +21,7 @@ export default function AddItem() {
 
   const handleSubmitFile = async (e) => {
     e.preventDefault();
-    // control for race conditions
-    setSubmitting(true);
+    setSubmitting(true); // control for race conditions
     console.log('you clicked submit!');
     try {
       const item_res = await fetch(process.env.API_URL + '/api/v1/items', {

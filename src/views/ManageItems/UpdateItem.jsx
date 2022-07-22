@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useHistory } from 'react-router-dom';
-import { useForm } from '../hooks/useForm';
-import DeleteButton from '../components/DeleteButton/DeleteButton';
+import { useForm } from '../../hooks/useForm';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 import toast from 'react-hot-toast';
-import styles from './AddItem.css';
+import styles from './ManageItems.css';
 
 export default function UpdateItem() {
   const history = useHistory();

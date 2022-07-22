@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../hooks/user';
-import { getAllItems } from '../services/items';
-import ItemCard from '../components/ItemCard/ItemCard';
+import { useAuth } from '../../hooks/user';
+import { getAllItems } from '../../services/items';
+import ItemCard from '../../components/ItemCard/ItemCard';
 import styles from './Home.css';
 
 export default function Home() {
