@@ -6,7 +6,7 @@ import styles from './AuthForm.css';
 
 export default function LoginForm({ initialState, isSigningUp, setIsSigningUp }) {
   const { login, errorMessage, setErrorMessage } = useAuth();
-  const { formState, handleChange, clearForm } = useForm(initialState);
+  const { formState, handleChange } = useForm(initialState);
   const history = useHistory();
 
   const handleSubmit = async (e) => {

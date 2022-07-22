@@ -1,6 +1,6 @@
-import { UserContext } from '../context/UserContext';
 import { useContext } from 'react';
 import { signUp, signIn, signOut } from '../services/users';
+import { UserContext } from '../context/UserContext';
 import toast from 'react-hot-toast';
 
 export const useAuth = () => {
