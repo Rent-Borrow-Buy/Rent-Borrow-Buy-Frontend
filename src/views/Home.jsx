@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from "react-router-dom";
 import { useAuth } from '../hooks/user';
 import { getAllItems } from '../services/items';
 import ItemCard from '../components/ItemCard/ItemCard';
 import styles from './Home.css';
-import { Link } from "react-router-dom";
 
 export default function Home() {
   const [items, setItems] = useState([]);
@@ -41,10 +40,12 @@ export default function Home() {
   }, []);
 
   // displays different items depending on user-selected filter
+  // dependency array changes render when either filter or search text changes
   useEffect(() => {
     const filter = () => {
       const newItems = items.filter(
         (item) =>
+          // return items where selector matches item type
           (rentableFilter && item.rent) ||
           (buyableFilter && item.buy) ||
           (borrowableFilter && item.borrow)

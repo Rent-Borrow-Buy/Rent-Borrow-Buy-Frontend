@@ -1,13 +1,13 @@
 import { Route, Switch } from 'react-router-dom';
 import { useAuth } from './hooks/user';
-import AddItem from './views/AddItem';
-import Auth from './views/Auth';
 import Home from './views/Home';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import UpdateItem from './views/UpdateItem';
+import Auth from './views/Auth';
 import ItemDetail from './views/ItemDetail';
-import Header from './components/Header/Header';
+import AddItem from './views/AddItem';
+import UpdateItem from './views/UpdateItem';
 import CreatorsPage from './views/CreatorsPage/CreatorsPage';
+import Header from './components/Header/Header';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import styles from './App.css';
 import toast, { Toaster } from 'react-hot-toast';
 

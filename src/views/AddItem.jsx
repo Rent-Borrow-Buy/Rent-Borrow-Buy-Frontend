@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
@@ -22,6 +21,7 @@ export default function AddItem() {
 
   const handleSubmitFile = async (e) => {
     e.preventDefault();
+    // control for race conditions
     setSubmitting(true);
     console.log('you clicked submit!');
     try {
@@ -134,7 +134,7 @@ export default function AddItem() {
             <span>cancel</span>
           </Link>
         </div>
-        { submitting && <p>Submitting item...</p> }
+        {submitting && <p>Submitting item...</p>}
       </form>
     </>
   );

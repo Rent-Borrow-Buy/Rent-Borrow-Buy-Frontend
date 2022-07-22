@@ -1,15 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import andrea from '../../assets/andrea.jpeg';
 import cole from '../../assets/cole.jpeg';
 import marcus from '../../assets/marcus.jpeg';
 import yovana from '../../assets/yovana.jpeg';
-import { Link } from "react-router-dom";
 import styles from '../../views/CreatorsPage/CreatorsPage.css';
-
 
 export default function CreatorsPage() {
   return (
-    <div>
+    <>
       <div className={styles.allcreators}>
         <Link className={styles.homeButtonContainer} to="/" >
           <button className={styles.homeButton}>&lt;&lt; return home</button>
@@ -55,6 +54,6 @@ export default function CreatorsPage() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
