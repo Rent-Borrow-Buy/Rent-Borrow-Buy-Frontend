@@ -1,5 +1,5 @@
-import { createContext, useEffect, useState } from "react";
-import { getUser } from "../services/users";
+import { createContext, useEffect, useState } from 'react';
+import { getUser } from '../services/users';
 
 export const UserContext = createContext();
 
@@ -8,6 +8,7 @@ export const UserProvider = ({ children }) => {
   const [user, setUser] = useState({email: null});
   const [loading, setLoading] = useState(true);
 
+  // sets user state for app based on signed in user
   useEffect(() => {
     const retrieveUser=  async () => {
       const currentUser = await getUser();

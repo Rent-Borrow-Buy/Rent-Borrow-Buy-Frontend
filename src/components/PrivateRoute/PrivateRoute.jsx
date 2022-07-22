@@ -7,9 +7,11 @@ export default function PrivateRoute({ children, ...rest }) {
 
   return (
     <Route {...rest}>
-      {user?.email ? (
+      {user?.email ? 
+      (
         children
-      ) : (
+      ) : 
+      (
         <Redirect
           to={{
             pathname: '/auth',

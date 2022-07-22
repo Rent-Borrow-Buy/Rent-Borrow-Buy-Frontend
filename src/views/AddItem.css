@@ -30,6 +30,7 @@
   font-size: 1.4rem;
   font-weight: 300;
   padding: 4px;
+  resize: none;
 }
 
 .homeButton {
@@ -54,6 +55,14 @@
 
 .checkboxes input {
   margin: 0px 8px;
+  width: 28px;
+  height: 16px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: 0px;
+  overflow: hidden;
 }
 
 .checkboxes label {
@@ -63,28 +72,18 @@
   text-indent: -12px;
 }
 
-.checkboxes input {
-  width: 28px;
-  height: 16px;
-  padding: 0;
-  margin:0;
-  vertical-align: bottom;
-  position: relative;
-  top: 0px;
-  *overflow: hidden;
-}
-
 .price {
   width: 20%;
   text-align: center;
 }
 
-.addItemForm textarea {
-  resize: none;
-}
-
 .upload label {
   font-weight: 300;
+}
+
+.addItemButton {
+  background-color: var(--color1);
+  border: 1px solid var(--color1);
 }
 
 .addItemButtons {
@@ -92,20 +91,6 @@
   display: flex;
   justify-content: space-around;
   width: 60%;
-}
-
-.addItemButtons a span,
-.addItemButtons button {
-  font-size: 1.2rem;
-  color: white;
-  font-weight: 600;
-  border-radius: 4px;
-  padding: 4px 12px;
-}
-
-.addItemButton {
-  background-color: var(--color1);
-  border: 1px solid var(--color1);
 }
 
 .addItemButtons a {
@@ -117,4 +102,13 @@
   border: 1px solid var(--color2);
   position: relative;
   top: 5px;
+}
+
+.addItemButtons a span,
+.addItemButtons button {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 4px 12px;
 }

@@ -8,6 +8,7 @@
   align-items: center;
   border-radius: 4px;
 }
+
 .creator {
   display: flex;
   flex-direction: row;
@@ -38,6 +39,7 @@
   color: var(--color7);
   padding: 20px;
 }
+
 .allcreators h2 {
   margin-left: 16px;
   color: var(--color7);

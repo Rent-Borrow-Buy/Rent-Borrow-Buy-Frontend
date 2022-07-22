@@ -1,7 +1,7 @@
-import toast from 'react-hot-toast';
-import { useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from 'react-router-dom';
 import { deleteItems } from "../../services/items";
 import styles from './DeleteButton.css';
+import toast from 'react-hot-toast';
 
 export default function DeleteButton(){
   const history = useHistory();
