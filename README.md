@@ -14,14 +14,14 @@
 3. If you don't want to see things to rent click on the rent button to deselect it. You'll still see things to borrow and buy and long as they're highlighted. You can also search for items.
 4. Click on an item to learn more about it.
 5. Wanna join and find a new home for some of your less-wanted things? Maybe your zamboni is taking up too much space. Click sign-up and create an account.
-6. From there you can add your zamboni. Choose and price and whether you want to make it available to rent, borrow, or buy. You can change your mind at any time by updating the item's info.
+6. From there you can add your zamboni. Choose a price and whether you want to make it available to rent, borrow, or buy. You can change your mind at any time by updating the item's info.
 7. If you're worried you'll miss your zamboni, feel free to remove it from the marketplace. 
 
 ---
 ## What's it made out of?
 We used React, HTML, CSS, and Javascript for the front end and Hot Toast for the notifications.
 We used Cloudinary to host our images.
-For the backend we created a CRUD RESTful API in a Node.js environment running on an Express server that used a PostgreSQL database.
+For the back end we created a CRUD RESTful API in a Node.js environment running on an Express server that used a PostgreSQL database.
 We used React Testing Library and supertest for testing.
 
 ---
