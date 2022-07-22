@@ -1,49 +1,63 @@
 import React from 'react';
 import { useState } from 'react';
-import { useHistory, Link } from 'react-router-dom';
 import ImageUpload from '../components/ImageUpload';
 import { useForm } from '../hooks/useForm';
-import styles from './AddItem.css';
+import { Link, useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import DeleteButton from '../components/DeleteButton/DeleteButton';
+import { useHistory } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import styles from './AddItem.css';
 
-export default function AddItem() {
+export default function UpdateItem() {
+  const history = useHistory();
+  const { id } = useParams();
   const [previewSource, setPreviewSource] = useState();
   const [selectedFile, setSelectedFile] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const history = useHistory();
-  const { formState, handleChange, clearForm } = useForm({
-    title: '',
-    description: '',
+
+  const { formState, handleChange, clearForm, setFormState } = useForm({
     rent: false,
     buy: false,
     borrow: false,
     sold: false,
   });
 
-  const handleSubmitFile = async (e) => {
+  useEffect(() => {
+    const getItem = async (id) => {
+      const resp = await fetch(process.env.API_URL + `/api/v1/items/${id}`);
+      const itemDetails = await resp.json();
+      setFormState(itemDetails);
+    };
+    getItem(id);
+  }, []);
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
     console.log('you clicked submit!');
     try {
-      const item_res = await fetch(process.env.API_URL + '/api/v1/items', {
-        method: 'POST',
-        body: JSON.stringify({ ...formState, encodedImage: previewSource }),
-        credentials: 'include',
-        mode: 'cors',
-        headers: { 'Content-type': 'application/json' },
-      });
-      toast.success('Successfully added item!');
-      setSubmitting(false);
+      const item_res = await fetch(
+        process.env.API_URL + `/api/v1/items/${id}`,
+        {
+          method: 'PUT',
+          body: JSON.stringify({ ...formState, encodedImage: previewSource }),
+          credentials: 'include',
+          mode: 'cors',
+          headers: { 'Content-type': 'application/json' },
+        }
+      );
+      toast.success('Successfully updated item!');
       history.push('/');
     } catch (e) {
-      toast.error('Failed to add item. Please try again.');
-      setSubmitting(false);
+      toast.error('Error encountered on update. Please try again.');
     }
   };
 
   return (
     <>
-      <form onSubmit={handleSubmitFile} className={styles.addItemForm}>
+      <form onSubmit={handleSubmit} className={styles.addItemForm}>
+        <Link to="/">
+          <button className={styles.homeButton}>&lt;&lt; return home</button>
+        </Link>
         <label htmlFor="title" />
         <input
           type="text"
@@ -116,25 +130,11 @@ export default function AddItem() {
           onChange={handleChange}
           placeholder="Zip Code"
         />
-        <ImageUpload
-          className={styles.upload}
-          setPreviewSource={setPreviewSource}
-          setSelectedFile={setSelectedFile}
-        />
-        {previewSource && (
-          <img
-            src={previewSource}
-            alt="chosen file"
-            style={{ height: '300px' }}
-          />
-        )}
         <div className={styles.addItemButtons}>
           <button className={styles.addItemButton} type="submit">submit</button>
-          <Link to="/">
-            <span>cancel</span>
-          </Link>
+          <DeleteButton/>
         </div>
-        { submitting && <p>Submitting item...</p> }
+
       </form>
     </>
   );

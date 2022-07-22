@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/user';
 import { useForm } from '../../hooks/useForm';
-import styles from '../AuthForm.css';
+import styles from '../AuthForm.css'
 
 export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }) {
   const { signUpUser, errorMessage, setErrorMessage } = useAuth();
@@ -85,7 +85,7 @@ export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }
         placeholder="zip code (optional)"
         id="Zipcode-Input"
         name="zipcode"
-        type="number"
+        type="text"
         value={formState.zipcode}
         onChange={handleChange}
       />

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import SignUpForm from '../components/SignUpForm/SignUpForm';
 import LoginForm from '../components/LoginForm';
+import styles from './Auth.css';
 
 export default function Auth() {
   const [isSigningUp, setIsSigningUp] = useState(true);
 
   return (
-    <>
+    <div className={styles.auth}>
       {
         isSigningUp ?
           <SignUpForm 
@@ -30,6 +31,6 @@ export default function Auth() {
             }}
           />
       }
-    </>
+    </div>
   );
 }

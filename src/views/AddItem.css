@@ -1,0 +1,120 @@
+.addItemForm {
+  margin: 12px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Source Sans Pro';
+  width: 95%;
+  background-color: var(--color6);
+  border-radius: 4px;
+}
+
+.addItemForm > * {
+  font-family: 'Source Sans Pro';
+  margin: 4px 0px;
+  width: 90%;
+}
+
+.addItemForm label {
+  margin-left: 4px;
+  margin-top: 16px;
+}
+
+.addItemForm input {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 4px;
+}
+
+.addItemForm textarea {
+  font-size: 1.4rem;
+  font-weight: 300;
+  padding: 4px;
+}
+
+.homeButton {
+  margin-top: 12px;
+  font-size: 0.8rem;
+  color: var(--color6);
+  background-color: var(--color1);
+  border: 1px solid var(--color5);
+  border-radius: 4px;
+}
+
+.checkboxesPrice {
+  display: flex;
+  justify-content: space-between;
+}
+
+.checkboxes {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+}
+
+.checkboxes input {
+  margin: 0px 8px;
+}
+
+.checkboxes label {
+  font-size: 0.8rem;
+  display: block;
+  padding-left: 12px;
+  text-indent: -12px;
+}
+
+.checkboxes input {
+  width: 28px;
+  height: 16px;
+  padding: 0;
+  margin:0;
+  vertical-align: bottom;
+  position: relative;
+  top: 0px;
+  *overflow: hidden;
+}
+
+.price {
+  width: 20%;
+  text-align: center;
+}
+
+.addItemForm textarea {
+  resize: none;
+}
+
+.upload label {
+  font-weight: 300;
+}
+
+.addItemButtons {
+  margin: 12px auto 20px auto;
+  display: flex;
+  justify-content: space-around;
+  width: 60%;
+}
+
+.addItemButtons a span,
+.addItemButtons button {
+  font-size: 1.2rem;
+  color: white;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.addItemButton {
+  background-color: var(--color1);
+  border: 1px solid var(--color1);
+}
+
+.addItemButtons a {
+  text-decoration: none;
+}
+
+.addItemButtons a span {
+  background-color: var(--color2);
+  border: 1px solid var(--color2);
+  position: relative;
+  top: 5px;
+}
