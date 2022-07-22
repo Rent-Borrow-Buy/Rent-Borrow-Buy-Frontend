@@ -1,67 +1,67 @@
 .allcreators {
-    background-color: var(--color6);
-    font-family: 'Source Sans Pro';
-    width: 95%;
-    margin: 12px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-radius: 4px;
-
+  background-color: var(--color6);
+  font-family: 'Source Sans Pro';
+  width: 95%;
+  margin: 12px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 4px;
+}
 .creator {
-    display: flex; 
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    padding: 12px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 12px;
 }
 
 .text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .homeButtonContainer {
-    margin: 12px 12px;
+  margin: 12px 12px;
 }
 
 .homeButton {
-    font-size: 0.8rem;
-    color: var(--color6);
-    background-color: var(--color1);
-    border: 1px solid var(--color5);
-    border-radius: 4px;
+  font-size: 0.8rem;
+  color: var(--color6);
+  background-color: var(--color1);
+  border: 1px solid var(--color5);
+  border-radius: 4px;
 }
 
 .text {
-  color:var(--color7);
+  color: var(--color7);
   padding: 20px;
 }
 .allcreators h2 {
-    margin-left: 16px;
-    color:var(--color7);
+  margin-left: 16px;
+  color: var(--color7);
 }
 
 .allcreators button {
-    display: flex;
-    flex-direction: row;
-    align-content: flex-end;
-    color: var(--color2);
-    background-color: var(--color6);
-    border: 2px solid var(--color1);
-    border-radius: 4px;
-    font-size: 0.6rem;
-    padding: 4px 4px;
+  display: flex;
+  flex-direction: row;
+  align-content: flex-end;
+  color: var(--color2);
+  background-color: var(--color6);
+  border: 2px solid var(--color1);
+  border-radius: 4px;
+  font-size: 0.6rem;
+  padding: 4px 4px;
 }
 
 .allcreators img {
-  height:200px;
-  width:250px ;
+  height: 200px;
+  width: 250px;
   object-fit: cover;
 }
 
 .allcreators p {
-    padding: 10px;
-    font-weight: 300;
+  padding: 10px;
+  font-weight: 300;
 }
