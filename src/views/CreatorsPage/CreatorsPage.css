@@ -45,9 +45,11 @@
 }
 
 .allcreators button {
-    align-items: flex-end;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-end;
     color: var(--color2);
-    background-color: var(--color6);
+    /* background-color: var(--color6);
     border: 2px solid var(--color1);
     border-radius: 4px;
     font-size: 0.6rem;

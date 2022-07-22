@@ -130,22 +130,11 @@ export default function UpdateItem() {
           onChange={handleChange}
           placeholder="Zip Code"
         />
-        <ImageUpload
-          className={styles.upload}
-          setPreviewSource={setPreviewSource}
-          setSelectedFile={setSelectedFile}
-        />
-        {previewSource && (
-          <img
-            src={previewSource}
-            alt="chosen file"
-            style={{ height: '300px' }}
-          />
-        )}
         <div className={styles.addItemButtons}>
           <button className={styles.addItemButton} type="submit">submit</button>
           <DeleteButton/>
         </div>
+
       </form>
     </>
   );
