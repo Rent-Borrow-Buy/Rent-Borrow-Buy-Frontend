@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 export const signUp = async (user) => {
   const resp = await fetch(`${process.env.API_URL}/api/v1/users`, {
     method: 'POST',
@@ -31,18 +33,22 @@ export const signIn = async ({ email, password }) => {
 };
 
 export const signOut = async () => {
-  const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
-    method: 'DELETE',
-    headers: { 'Content-Type': 'application/json' },
-    credentials: 'include',
-    mode: 'cors',
-  });
+  try {
+    const resp = await fetch(`${process.env.API_URL}/api/v1/users/sessions`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      mode: 'cors',
+    });
 
-  if (!resp.ok) throw new Error('There was a problem signing out');
+    if (!resp.ok) throw new Error('There was a problem signing out');
 
-  const json = await resp.json();
+    const json = await resp.json();
 
-  return json;
+    return json;
+  } catch (e) {
+    toast.error('There was a problem signing out');
+  }
 };
 
 export const getUser = async () => {

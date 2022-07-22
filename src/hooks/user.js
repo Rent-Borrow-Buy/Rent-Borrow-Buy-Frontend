@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { signUp, signIn, signOut } from '../services/users';
 import { UserContext } from '../context/UserContext';
 import toast from 'react-hot-toast';
+import { useHistory } from 'react-router-dom';
 
 export const useAuth = () => {
   const context = useContext(UserContext);
@@ -13,6 +14,8 @@ export const useAuth = () => {
   const { user, setUser, errorMessage, setErrorMessage, loading, setLoading } =
     context;
 
+  const history = useHistory();
+
   const isLoggedIn = user?.email;
 
   const login = async (email, password) => {
@@ -22,7 +25,8 @@ export const useAuth = () => {
       setUser(authenticatedUser);
       toast.success('Welcome back!');
     } catch (e) {
-      toast.error('Login unsuccessful');
+      toast.error(e.message);
+      history.replace('/auth');
     }
   };
 
@@ -33,7 +37,7 @@ export const useAuth = () => {
       setUser(newUser);
       toast.success(`Successfully created account for ${newUser.email}`);
     } catch (e) {
-      toast.error('Failed to sign up user. Please try again.');
+      toast.error(e.message);
     }
   };
 
@@ -43,7 +47,7 @@ export const useAuth = () => {
       await signOut();
       toast.success('Successfully signed out');
     } catch (e) {
-      toast.error('Logout unsuccessful');
+      toast.error(e.message);
     }
   };
 
