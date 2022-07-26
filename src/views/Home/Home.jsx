@@ -61,43 +61,45 @@ export default function Home() {
   if (loading) return <span>loading...</span>;
 
   return (
-    <>
-    {errorMessage && <span>{errorMessage}</span>}
-    <div className={styles.searchFilters}>
-      <input
-        type="text"
-        placeholder="Search"
-        value={searchText}
-        onChange={handleSearchChange}
-      />
-      <div className={styles.filters}>
-        <span
-          className={rentableFilter ? styles.active : styles.off}
-          onClick={() => setRentableFilter(!rentableFilter)}
-        >
-          rent
-        </span>
-        <span
-          className={borrowableFilter ? styles.active : styles.off}
-          onClick={() => setBorrowableFilter(!borrowableFilter)}
-        >
-          borrow
-        </span>
-        <span
-          className={buyableFilter ? styles.active : styles.off}
-          onClick={() => setBuyableFilter(!buyableFilter)}
-        >
-          buy
-        </span>
+    <main>
+      {errorMessage && <span>{errorMessage}</span>}
+      <div className={styles.searchFilters}>
+        <input
+          type="text"
+          placeholder="Search"
+          value={searchText}
+          onChange={handleSearchChange}
+        />
+        <div className={styles.filters}>
+          <span
+            className={rentableFilter ? styles.active : styles.off}
+            onClick={() => setRentableFilter(!rentableFilter)}
+          >
+            rent
+          </span>
+          <span
+            className={borrowableFilter ? styles.active : styles.off}
+            onClick={() => setBorrowableFilter(!borrowableFilter)}
+          >
+            borrow
+          </span>
+          <span
+            className={buyableFilter ? styles.active : styles.off}
+            onClick={() => setBuyableFilter(!buyableFilter)}
+          >
+            buy
+          </span>
+        </div>
       </div>
-    </div>
 
-    {filteredItems.map((item) => (
-      <ItemCard key={item.id} {...item} />
-    ))}
-    <Link to="/creators" >
-      <button className={styles.aboutButton}>meet the developers!</button>
-    </Link>
-    </>
+      <section className={styles.itemCards}>
+        {filteredItems.map((item) => (
+          <ItemCard key={item.id} {...item} />
+        ))}
+        <Link to="/creators" >
+          <button className={styles.aboutButton}>meet the developers!</button>
+        </Link>
+      </section>
+    </main>
   );
 }

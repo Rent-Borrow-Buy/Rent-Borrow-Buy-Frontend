@@ -7,12 +7,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 500px;
 }
 
 .itemImage {
   border: 1px solid var(--color5);
   border-radius: 4px;
-  margin-top: 8px;
+  margin: 8px auto 0px auto;
+  max-width: 475px;
   width: 90vw;
 }
 
@@ -55,4 +57,24 @@
   font-size: 0.8rem;
   padding: 4px;
   margin: 8px;
+}
+
+@media screen and (min-width: 550px) {
+  .itemCard {
+    max-width: 400px;
+  }
+
+  .itemImage {
+    max-width: 380px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  .itemCard {
+    max-width: 300px;
+  }
+
+  .itemImage {
+    max-width: 285px;
+  }
 }
