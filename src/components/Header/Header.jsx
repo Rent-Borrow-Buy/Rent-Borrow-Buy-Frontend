@@ -1,6 +1,6 @@
-import { useAuth } from "../../hooks/user";
-import { Link } from "react-router-dom";
-import Logout from "../LogoutButton/LogoutButton";
+import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/user';
+import Logout from '../LogoutButton/LogoutButton';
 import styles from "./Header.css";
 
 export default function Header() {

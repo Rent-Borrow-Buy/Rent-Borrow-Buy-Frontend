@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/user';
 import { useForm } from '../../hooks/useForm';
-import styles from '../AuthForm.css'
+import styles from './AuthForm.css'
 
 export default function SignUpForm({ initialState, setIsSigningUp, isSigningUp }) {
   const { signUpUser, errorMessage, setErrorMessage } = useAuth();
-  const { formState, handleChange, clearForm } = useForm(initialState);
+  const { formState, handleChange } = useForm(initialState);
   const history = useHistory();
 
   const handleSubmit = async (e) => {

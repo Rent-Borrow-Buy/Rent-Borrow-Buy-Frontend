@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
-import { Link, useHistory, useParams } from 'react-router-dom';
-import DeleteButton from '../components/DeleteButton/DeleteButton';
-import Logout from '../components/LogoutButton/LogoutButton';
-import { useAuth } from '../hooks/user';
-import { deleteItems, getItemById } from '../services/items';
+import { Link, useParams } from 'react-router-dom';
+import { getItemById } from '../../services/items';
+import { useAuth } from '../../hooks/user';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 import styles from './ItemDetail.css';
 
 export default function ItemDetail() {
   const [item, setItem] = useState({});
   const [loading, setLoading] = useState(true);
-  const history = useHistory();
   const { user, errorMessage, setErrorMessage } = useAuth();
   const { id } = useParams();
   const isCreator = user?.id === item.user_id;
@@ -37,9 +35,10 @@ export default function ItemDetail() {
     newDate.pop();
     newDate.shift();
     newDate = newDate[0] + ' ' + newDate[1];
-    return [newDate, time];
+    return [time, newDate];
   }
 
+  // fetches item data as params change
   useEffect(() => {
     try {
       const fetchData = async () => {
@@ -56,7 +55,6 @@ export default function ItemDetail() {
   if (loading) return <span>loading...</span>;
 
   return (
-
     <div className={styles.itemDetail}>
       {errorMessage && <span>{errorMessage}</span>}
       <div className={styles.homePrice}>
@@ -78,10 +76,11 @@ export default function ItemDetail() {
         {item.buy && <span>buy</span>}
       </div>
       <p className={styles.description}>{item.description}</p>
-      <p className={styles.listed}>listed at {
-            formatDetailDate(item.listed_date)[1] + ' on ' +
-            formatDetailDate(item.listed_date)[0]
-          }
+      <p className={styles.listed}>
+        listed at {
+          formatDetailDate(item.listed_date)[0] + ' on ' +
+          formatDetailDate(item.listed_date)[1]
+        }
       </p>
       <div>
         {isCreator && (

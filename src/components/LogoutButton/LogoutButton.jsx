@@ -1,5 +1,5 @@
-import { useAuth } from "../../hooks/user";
-import {useHistory} from "react-router-dom";
+import {useHistory} from 'react-router-dom';
+import { useAuth } from '../../hooks/user';
 
 export default function Logout() {
 const history =useHistory(); 
@@ -9,6 +9,7 @@ const history =useHistory();
         await logout();
         history.push('/');
     }
+    
     return (
         <>
        {user && <button onClick={handleLogout}>logout</button>}

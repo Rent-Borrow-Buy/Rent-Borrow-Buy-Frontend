@@ -1,5 +1,5 @@
 * {
-  /* CSS HSL */
+  /* color palette to be used in components */
   --color1: #06D2FF;
   --color2: #FF471F;
   --color3: #12FFA8;
@@ -12,6 +12,9 @@
   margin: 0;
 }
 
+/* i'm a sucker for that orange outline of the selected input
+against the blue of the header throughout the rest of the app so I
+want it on every input */
 input:focus {
   outline-color: var(--color2);
 }

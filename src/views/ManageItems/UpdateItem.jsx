@@ -1,27 +1,24 @@
-import React from 'react';
-import { useState } from 'react';
-import ImageUpload from '../components/ImageUpload';
-import { useForm } from '../hooks/useForm';
-import { Link, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
-import DeleteButton from '../components/DeleteButton/DeleteButton';
-import { useHistory } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams, useHistory } from 'react-router-dom';
+import { useForm } from '../../hooks/useForm';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 import toast from 'react-hot-toast';
-import styles from './AddItem.css';
+import styles from './ManageItems.css';
 
 export default function UpdateItem() {
   const history = useHistory();
   const { id } = useParams();
   const [previewSource, setPreviewSource] = useState();
-  const [selectedFile, setSelectedFile] = useState('');
 
-  const { formState, handleChange, clearForm, setFormState } = useForm({
+  // controls form inputs
+  const { formState, handleChange, setFormState } = useForm({
     rent: false,
     buy: false,
     borrow: false,
     sold: false,
   });
 
+  // initializes form with item to be updated
   useEffect(() => {
     const getItem = async (id) => {
       const resp = await fetch(process.env.API_URL + `/api/v1/items/${id}`);
@@ -31,6 +28,7 @@ export default function UpdateItem() {
     getItem(id);
   }, []);
 
+  // updates database for item
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log('you clicked submit!');
