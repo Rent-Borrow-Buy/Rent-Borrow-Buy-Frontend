@@ -56,11 +56,3 @@ body {
   margin: 0px 0px 12px 12px;
   padding: 8px;
 }
-
-@media screen and (min-width: 550px) {
-  .itemCards {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
-}
